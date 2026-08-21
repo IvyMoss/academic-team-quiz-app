@@ -2,14 +2,17 @@
  * VHSL Scholastic Bowl practice app.
  *
  * Round structure (see academic-team.md research note):
- *   Period 1  — toss-ups, pyramidal, buzz-in with spacebar
- *   Directed  — bounce-back round, single non-pyramidal clue, no buzzing
- *   Period 2  — toss-ups, pyramidal, buzz-in with spacebar
+ *   Period 1  — 15 toss-ups, pyramidal, buzz-in
+ *   Directed  — 10 bounce-back questions, single non-pyramidal clue, no buzzing
+ *   Period 2  — 15 toss-ups, pyramidal, buzz-in
  *
- * The real format is 15 + 10 + 15. This sample bank is smaller, so each
- * period simply uses half the toss-up bank (capped at 15) and the round
- * labels note the bank size — add more questions to questions.js to grow
- * toward full-length periods.
+ * Questions come from questions.js, which exposes BANKS: a list of
+ * difficulty-tiered sets, each a full 30 toss-ups + 10 directed questions.
+ * Periods split a bank's toss-ups in half, so a 30-toss-up bank yields the
+ * regulation 15 + 10 + 15. Smaller banks still work; periods just shrink.
+ *
+ * Buzzing is bound to both the spacebar and an on-screen BUZZ button so the
+ * app is usable on phones and tablets.
  */
 
 const TOSSUP_ANSWER_SECONDS = 8;
@@ -29,6 +32,7 @@ const ui = {
   timerToggle: el("timerToggle"),
   speedSelect: el("speedSelect"),
   bankNote: el("bankNote"),
+  bankGrid: el("bankGrid"),
   countPeriod1: el("count-period1"),
   countDirected: el("count-directed"),
   countPeriod2: el("count-period2"),
@@ -41,6 +45,7 @@ const ui = {
   timerText: el("timerText"),
   clueText: el("clueText"),
   buzzHint: el("buzzHint"),
+  buzzBtn: el("buzzBtn"),
   answerArea: el("answerArea"),
   answerInput: el("answerInput"),
   revealBtn: el("revealBtn"),
@@ -50,31 +55,78 @@ const ui = {
   gradeCorrectBtn: el("gradeCorrectBtn"),
   gradeIncorrectBtn: el("gradeIncorrectBtn"),
   nextBtn: el("nextBtn"),
+  quitRoundBtn: el("quitRoundBtn"),
   summaryTitle: el("summaryTitle"),
   summaryStat: el("summaryStat"),
+  summarySub: el("summarySub"),
   homeBtn: el("homeBtn"),
 };
 
-// ---- Round pools ------------------------------------------------------
+// ---- Bank selection ----------------------------------------------------
 
-function buildPools() {
-  const half = Math.ceil(TOSSUPS.length / 2);
-  const period1 = TOSSUPS.slice(0, half).map((q) => ({ ...q, type: "tossup" }));
-  const period2 = TOSSUPS.slice(half).map((q) => ({ ...q, type: "tossup" }));
-  const directed = DIRECTED.map((q) => ({ ...q, type: "directed" }));
-  return { period1, directed, period2 };
+let currentBankId =
+  (typeof DEFAULT_BANK_ID !== "undefined" && BANKS.some((b) => b.id === DEFAULT_BANK_ID))
+    ? DEFAULT_BANK_ID
+    : BANKS[0].id;
+
+let pools = {};
+
+function currentBank() {
+  return BANKS.find((b) => b.id === currentBankId);
 }
 
-const pools = buildPools();
+function buildPools(bank) {
+  const half = Math.ceil(bank.tossups.length / 2);
+  return {
+    period1: bank.tossups.slice(0, half).map((q) => ({ ...q, type: "tossup" })),
+    period2: bank.tossups.slice(half).map((q) => ({ ...q, type: "tossup" })),
+    directed: bank.directed.map((q) => ({ ...q, type: "directed" })),
+  };
+}
 
-const isRegulationSize = pools.period1.length === 15 && pools.directed.length === 10 && pools.period2.length === 15;
-ui.bankNote.textContent = isRegulationSize
-  ? `Question bank: ${TOSSUPS.length} toss-ups + ${DIRECTED.length} directed questions — full regulation VHSL length (15 + 10 + 15).`
-  : `Question bank: ${TOSSUPS.length} toss-ups + ${DIRECTED.length} directed questions ` +
-    `(a real VHSL round is 15 + 10 + 15 — periods below are scaled to this bank's current size).`;
-ui.countPeriod1.textContent = `${pools.period1.length} question${pools.period1.length === 1 ? "" : "s"}`;
-ui.countDirected.textContent = `${pools.directed.length} question${pools.directed.length === 1 ? "" : "s"}`;
-ui.countPeriod2.textContent = `${pools.period2.length} question${pools.period2.length === 1 ? "" : "s"}`;
+function renderBankGrid() {
+  ui.bankGrid.innerHTML = "";
+  BANKS.forEach((bank) => {
+    const btn = document.createElement("button");
+    btn.className = "bank-card" + (bank.id === currentBankId ? " selected" : "");
+    btn.dataset.bank = bank.id;
+    btn.setAttribute("aria-pressed", String(bank.id === currentBankId));
+    btn.innerHTML = `
+      <span class="bank-card-top">
+        <span class="bank-name"></span>
+        <span class="difficulty-badge difficulty-${bank.id}"></span>
+      </span>
+      <span class="bank-blurb"></span>
+      <span class="bank-counts"></span>`;
+    btn.querySelector(".bank-name").textContent = bank.name;
+    btn.querySelector(".difficulty-badge").textContent = bank.difficulty;
+    btn.querySelector(".bank-blurb").textContent = bank.blurb;
+    btn.querySelector(".bank-counts").textContent =
+      `${bank.tossups.length} toss-ups · ${bank.directed.length} directed`;
+    btn.addEventListener("click", () => selectBank(bank.id));
+    ui.bankGrid.appendChild(btn);
+  });
+}
+
+function selectBank(id) {
+  currentBankId = id;
+  pools = buildPools(currentBank());
+  renderBankGrid();
+  updateBankInfo();
+}
+
+function updateBankInfo() {
+  const bank = currentBank();
+  const regulation =
+    pools.period1.length === 15 && pools.directed.length === 10 && pools.period2.length === 15;
+  ui.bankNote.textContent = regulation
+    ? `${bank.name} (${bank.difficulty}): full regulation VHSL length — 15 + 10 + 15.`
+    : `${bank.name} (${bank.difficulty}): ${bank.tossups.length} toss-ups + ${bank.directed.length} directed ` +
+      `(a regulation round is 15 + 10 + 15 — periods are scaled to this bank).`;
+  ui.countPeriod1.textContent = `${pools.period1.length} questions`;
+  ui.countDirected.textContent = `${pools.directed.length} questions`;
+  ui.countPeriod2.textContent = `${pools.period2.length} questions`;
+}
 
 const ROUND_LABELS = {
   period1: "Period 1 — Toss-Ups",
@@ -85,12 +137,9 @@ const ROUND_LABELS = {
 // ---- Session state ------------------------------------------------------
 
 const session = { correct: 0, total: 0 };
+let roundStats = { correct: 0, total: 0 };
 
-const match = {
-  queue: [],       // [{ round, question }]
-  index: 0,
-  roundBreaks: {}, // index -> round label shown before that question
-};
+const match = { queue: [], index: 0 };
 
 let phase = "idle"; // 'reading' | 'answering' | 'revealed'
 let readWords = [];
@@ -101,6 +150,7 @@ let answerTimerStart = null;
 let answerTimerDuration = 0;
 let currentQ = null;
 let currentRoundKey = null;
+let currentRoundName = "";
 let graded = false;
 
 function updateScoreDisplay() {
@@ -113,7 +163,7 @@ function showScreen(name) {
   screens[name].hidden = false;
 }
 
-// ---- Starting a round ------------------------------------------------
+// ---- Starting / ending a round ----------------------------------------
 
 function startRound(roundKey) {
   let queue;
@@ -123,25 +173,28 @@ function startRound(roundKey) {
       ...pools.directed.map((q) => ({ round: "directed", question: q })),
       ...pools.period2.map((q) => ({ round: "period2", question: q })),
     ];
+    currentRoundName = "Full Match";
   } else {
     queue = pools[roundKey].map((q) => ({ round: roundKey, question: q }));
+    currentRoundName = ROUND_LABELS[roundKey];
   }
+  if (queue.length === 0) return;
 
+  roundStats = { correct: 0, total: 0 };
   match.queue = queue;
   match.index = 0;
-
-  if (queue.length === 0) return;
   showScreen("question");
   loadCurrentQuestion();
 }
 
-let roundStats = { correct: 0, total: 0 };
-
 function endRound() {
+  clearTimers();
+  phase = "idle";
   showScreen("summary");
   const pct = roundStats.total ? Math.round((roundStats.correct / roundStats.total) * 100) : 0;
-  ui.summaryTitle.textContent = "Round Complete";
+  ui.summaryTitle.textContent = `${currentRoundName} Complete`;
   ui.summaryStat.textContent = `${roundStats.correct} / ${roundStats.total} correct (${pct}%)`;
+  ui.summarySub.textContent = `${currentBank().name} · ${currentBank().difficulty}`;
 }
 
 // ---- Loading / advancing questions ------------------------------------
@@ -186,12 +239,13 @@ function advance() {
 
 function startTossupReading() {
   phase = "reading";
-  const fullText = currentQ.clues.join(" ");
-  readWords = fullText.split(" ");
+  readWords = currentQ.clues.join(" ").split(" ");
   revealCount = 0;
   ui.clueText.textContent = "";
-  ui.buzzHint.textContent = "Press Space to buzz in";
-  ui.buzzHint.classList.remove("dim");
+  ui.buzzHint.textContent = "Reading… buzz the moment you know it.";
+  ui.buzzHint.classList.add("dim");
+  ui.buzzBtn.hidden = false;
+  ui.buzzBtn.classList.remove("fired");
 
   const speed = parseInt(ui.speedSelect.value, 10);
   const tick = () => {
@@ -199,19 +253,17 @@ function startTossupReading() {
     revealCount += 1;
     renderClueText();
     if (revealCount >= readWords.length) {
-      clearInterval(readTimer);
-      readTimer = null;
-      // Nobody buzzed — question is "dead," go straight to reveal.
-      enterAnswering(true);
+      clearReadTimer();
+      enterAnswering(true); // ran out of question — nobody buzzed
       return;
     }
+    // Brief extra pause after punctuation, so the read sounds natural.
     const word = readWords[revealCount - 1];
-    const extraPause = /[.,;:]$/.test(word) ? speed * 0.6 : 0;
-    if (extraPause > 0) {
-      clearInterval(readTimer);
+    if (/[.,;:]$/.test(word)) {
+      clearReadTimer();
       readTimer = setTimeout(() => {
         readTimer = setInterval(tick, speed);
-      }, extraPause);
+      }, speed * 0.6);
     }
   };
   readTimer = setInterval(tick, speed);
@@ -219,6 +271,15 @@ function startTossupReading() {
 
 function renderClueText() {
   ui.clueText.textContent = readWords.slice(0, revealCount).join(" ");
+  keepReadingInView();
+}
+
+// As the question grows past the fold, follow it — otherwise a long toss-up
+// scrolls its newest clues out of sight while the reader is trying to buzz.
+function keepReadingInView() {
+  const margin = 150; // leave room for the sticky BUZZ button
+  const overflow = ui.clueText.getBoundingClientRect().bottom - (window.innerHeight - margin);
+  if (overflow > 0) window.scrollBy(0, overflow);
 }
 
 function buzzIn() {
@@ -227,6 +288,8 @@ function buzzIn() {
   renderClueText();
   ui.buzzHint.textContent = "BUZZ! Answer now.";
   ui.buzzHint.classList.remove("dim");
+  ui.buzzBtn.classList.add("fired");
+  ui.buzzBtn.hidden = true;
   enterAnswering(false);
 }
 
@@ -245,23 +308,24 @@ function startDirectedQuestion() {
   ui.clueText.textContent = currentQ.question;
   ui.buzzHint.textContent = "No buzzing — this one's asked straight through.";
   ui.buzzHint.classList.add("dim");
+  ui.buzzBtn.hidden = true;
   ui.answerArea.hidden = false;
-  ui.answerInput.focus();
   maybeStartAnswerTimer(DIRECTED_ANSWER_SECONDS);
 }
 
-// ---- Answering (post-buzz for toss-ups, immediate for directed) ------
+// ---- Answering ------------------------------------
 
-function enterAnswering(noBuzz) {
+function enterAnswering(ranOut) {
   phase = "answering";
+  ui.buzzBtn.hidden = true;
   ui.answerArea.hidden = false;
-  ui.answerInput.focus();
-  if (noBuzz) {
+  if (ranOut) {
     ui.buzzHint.textContent = "End of question — no buzz. Here's the answer:";
     ui.buzzHint.classList.add("dim");
     revealAnswer();
     return;
   }
+  ui.answerInput.focus();
   maybeStartAnswerTimer(TOSSUP_ANSWER_SECONDS);
 }
 
@@ -278,8 +342,7 @@ function maybeStartAnswerTimer(seconds) {
   ui.timerBarFill.classList.remove("warning", "danger");
   ui.timerBarFill.style.transition = "none";
   ui.timerBarFill.style.width = "100%";
-  // Force reflow so the transition below actually animates from 100%.
-  void ui.timerBarFill.offsetWidth;
+  void ui.timerBarFill.offsetWidth; // reflow so the transition animates from 100%
   ui.timerBarFill.style.transition = `width ${seconds}s linear`;
   ui.timerBarFill.style.width = "0%";
 
@@ -342,13 +405,17 @@ function grade(isCorrect) {
   ui.nextBtn.focus();
 }
 
+function goHome() {
+  clearTimers();
+  phase = "idle";
+  ui.buzzBtn.hidden = true;
+  showScreen("home");
+}
+
 // ---- Event wiring ------------------------------------
 
 document.querySelectorAll(".round-card").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    roundStats = { correct: 0, total: 0 };
-    startRound(btn.dataset.round);
-  });
+  btn.addEventListener("click", () => startRound(btn.dataset.round));
 });
 
 ui.resetScoreBtn.addEventListener("click", () => {
@@ -356,6 +423,9 @@ ui.resetScoreBtn.addEventListener("click", () => {
   session.total = 0;
   updateScoreDisplay();
 });
+
+// Buzz button: the mobile/touch equivalent of the spacebar.
+ui.buzzBtn.addEventListener("click", buzzIn);
 
 ui.revealBtn.addEventListener("click", revealAnswer);
 ui.answerInput.addEventListener("keydown", (e) => {
@@ -365,23 +435,24 @@ ui.answerInput.addEventListener("keydown", (e) => {
 ui.gradeCorrectBtn.addEventListener("click", () => grade(true));
 ui.gradeIncorrectBtn.addEventListener("click", () => grade(false));
 ui.nextBtn.addEventListener("click", advance);
-ui.homeBtn.addEventListener("click", () => {
-  clearTimers();
-  phase = "idle";
-  showScreen("home");
-});
+ui.quitRoundBtn.addEventListener("click", goHome);
+ui.homeBtn.addEventListener("click", goHome);
 
 document.addEventListener("keydown", (e) => {
   if (screens.question.hidden) return;
-  if (e.code === "Space" || e.key === " ") {
-    if (phase === "reading") {
-      e.preventDefault();
-      buzzIn();
-    } else if (document.activeElement !== ui.answerInput) {
-      // Avoid hijacking spacebar from the answer input's normal typing.
-      e.preventDefault();
-    }
+  if (e.code !== "Space" && e.key !== " ") return;
+  if (phase === "reading") {
+    e.preventDefault();
+    buzzIn();
+  } else if (document.activeElement !== ui.answerInput) {
+    // Keep the spacebar from scrolling the page mid-question, but don't
+    // interfere with typing an answer.
+    e.preventDefault();
   }
 });
 
+// ---- Init ------------------------------------
+
+renderBankGrid();
+selectBank(currentBankId);
 updateScoreDisplay();

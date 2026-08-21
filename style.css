@@ -149,11 +149,82 @@ main {
   color: var(--amber) !important;
 }
 
+.section-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin: 28px 0 12px;
+  font-weight: 700;
+}
+
+/* Bank selector */
+.bank-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.bank-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.bank-card:hover { border-color: var(--accent-dim); }
+.bank-card.selected {
+  border-color: var(--accent);
+  background: linear-gradient(var(--card), var(--card)) padding-box,
+              var(--accent) border-box;
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+.bank-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bank-name { font-weight: 700; font-size: 0.98rem; }
+.difficulty-badge {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+}
+.difficulty-novice { color: var(--green); border-color: var(--green); }
+.difficulty-regular { color: var(--accent); border-color: var(--accent); }
+.difficulty-regional { color: var(--amber); border-color: var(--amber); }
+.difficulty-state { color: var(--red); border-color: var(--red); }
+
+.bank-blurb {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+.bank-counts {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
 .round-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-top: 20px;
 }
 
 .round-card {
@@ -267,6 +338,47 @@ main {
   font-weight: 400;
 }
 
+/* Buzz button — the touch-friendly equivalent of the spacebar.
+   Sticky to the bottom of the viewport so it stays under the reader's thumb
+   instead of sliding down the page as the question text grows. */
+.buzz-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  position: sticky;
+  bottom: 16px;
+  z-index: 5;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  /* Avoid the 300ms tap delay and double-tap-to-zoom on mobile. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.06s ease, background 0.15s ease;
+}
+.buzz-btn:hover { background: #3f7de0; }
+.buzz-btn:active { transform: scale(0.985); background: #356ec9; }
+.buzz-btn-main {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+.buzz-btn-sub {
+  font-size: 0.76rem;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
 .answer-area {
   margin-top: 18px;
 }
@@ -367,10 +479,25 @@ main {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent);
-  margin: 14px 0 22px;
+  margin: 14px 0 6px;
+}
+.summary-sub {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 22px;
 }
 
+#quitRoundBtn { display: block; }
+
 @media (max-width: 560px) {
-  .round-grid { grid-template-columns: 1fr; }
+  .round-grid,
+  .bank-grid { grid-template-columns: 1fr; }
   .app-header { flex-direction: column; align-items: flex-start; }
+  main { padding: 20px 16px 60px; }
+  .clue-text { font-size: 1.12rem; }
+  /* Bigger tap target on phones, where there's no spacebar to fall back on. */
+  .buzz-btn { padding: 26px; }
+  .buzz-btn-main { font-size: 1.7rem; }
+  .grade-buttons { flex-direction: column; }
+  .grade-btn { width: 100%; }
 }

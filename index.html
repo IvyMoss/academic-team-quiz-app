@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VHSL Scholastic Bowl Practice</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -42,12 +42,17 @@
         Modeled on the VHSL Scholastic Bowl format: two 15-toss-up periods
         bracketing a 10-question directed (bounce-back) round. Toss-ups are
         pyramidal — hardest clue first, giveaway last — and read aloud
-        progressively; buzz in with <kbd>Space</kbd> the instant you know it.
-        Directed questions are single-clue, asked straight through.
+        progressively; buzz in with <kbd>Space</kbd> or the on-screen
+        <strong>BUZZ</strong> button the instant you know it. Directed
+        questions are single-clue, asked straight through.
       </p>
       <p class="bank-note" id="bankNote"></p>
     </div>
 
+    <h3 class="section-label">Question Bank</h3>
+    <div class="bank-grid" id="bankGrid"></div>
+
+    <h3 class="section-label">Choose a Round</h3>
     <div class="round-grid">
       <button class="round-card" data-round="period1">
         <h3>Period 1</h3>
@@ -88,8 +93,14 @@
 
     <div class="reading-card">
       <p class="clue-text" id="clueText"></p>
-      <p class="buzz-hint" id="buzzHint">Press <kbd>Space</kbd> to buzz in</p>
+      <p class="buzz-hint" id="buzzHint"></p>
     </div>
+
+    <!-- Tap/click target for buzzing — works on mobile where there's no spacebar. -->
+    <button id="buzzBtn" class="buzz-btn" hidden>
+      <span class="buzz-btn-main">BUZZ</span>
+      <span class="buzz-btn-sub">tap, or press Space</span>
+    </button>
 
     <div class="answer-area" id="answerArea" hidden>
       <input type="text" id="answerInput" placeholder="Type your answer (optional — for your own reference)" autocomplete="off">
@@ -111,6 +122,8 @@
         <button id="nextBtn" class="primary-btn" hidden>Next Question →</button>
       </div>
     </div>
+
+    <button id="quitRoundBtn" class="text-btn">← Back to setup</button>
   </section>
 
   <!-- SUMMARY SCREEN -->
@@ -118,14 +131,16 @@
     <div class="card summary-card">
       <h2 id="summaryTitle">Round Complete</h2>
       <p class="summary-stat" id="summaryStat"></p>
+      <p class="summary-sub" id="summarySub"></p>
       <button id="homeBtn" class="primary-btn">Back to Home</button>
     </div>
   </section>
 
 </main>
 
-<!-- Bump the ?v= query below whenever questions.js/app.js change, so browsers (and GitHub Pages' cache) pick up the update instead of serving a stale cached copy. -->
-<script src="questions.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<!-- Bump the ?v= query below whenever these files change, so browsers (and the
+     GitHub Pages cache) pick up the update instead of serving a stale copy. -->
+<script src="questions.js?v=3"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>
