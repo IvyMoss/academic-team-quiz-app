@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VHSL Scholastic Bowl Practice</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <h1>VHSL Scholastic Bowl <span>Practice</span></h1>
+  </div>
+  <div class="header-controls">
+    <div class="score-display">
+      <span id="scoreCorrect">0</span> / <span id="scoreTotal">0</span> correct
+    </div>
+    <label class="toggle">
+      <input type="checkbox" id="timerToggle">
+      <span class="toggle-track"><span class="toggle-thumb"></span></span>
+      <span class="toggle-label">Timer mode</span>
+    </label>
+    <label class="speed-select-label">
+      Reading speed
+      <select id="speedSelect">
+        <option value="320">Slow</option>
+        <option value="220" selected>Normal</option>
+        <option value="130">Fast</option>
+      </select>
+    </label>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME SCREEN -->
+  <section id="screen-home" class="screen">
+    <div class="card intro-card">
+      <h2>Practice Match Setup</h2>
+      <p>
+        Modeled on the VHSL Scholastic Bowl format: two 15-toss-up periods
+        bracketing a 10-question directed (bounce-back) round. Toss-ups are
+        pyramidal — hardest clue first, giveaway last — and read aloud
+        progressively; buzz in with <kbd>Space</kbd> the instant you know it.
+        Directed questions are single-clue, asked straight through.
+      </p>
+      <p class="bank-note" id="bankNote"></p>
+    </div>
+
+    <div class="round-grid">
+      <button class="round-card" data-round="period1">
+        <h3>Period 1</h3>
+        <p>Toss-Ups</p>
+        <span class="round-count" id="count-period1"></span>
+      </button>
+      <button class="round-card" data-round="directed">
+        <h3>Directed Round</h3>
+        <p>Bounce-Back</p>
+        <span class="round-count" id="count-directed"></span>
+      </button>
+      <button class="round-card" data-round="period2">
+        <h3>Period 2</h3>
+        <p>Toss-Ups</p>
+        <span class="round-count" id="count-period2"></span>
+      </button>
+      <button class="round-card round-card-wide" data-round="full">
+        <h3>Full Match</h3>
+        <p>Period 1 → Directed → Period 2, back to back</p>
+      </button>
+    </div>
+
+    <button id="resetScoreBtn" class="text-btn">Reset score</button>
+  </section>
+
+  <!-- QUESTION SCREEN -->
+  <section id="screen-question" class="screen" hidden>
+    <div class="question-meta">
+      <span class="pill" id="roundLabel"></span>
+      <span class="pill category-pill" id="categoryLabel"></span>
+      <span class="q-counter" id="qCounter"></span>
+    </div>
+
+    <div class="timer-wrap" id="timerWrap" hidden>
+      <div class="timer-bar"><div class="timer-bar-fill" id="timerBarFill"></div></div>
+      <div class="timer-text" id="timerText"></div>
+    </div>
+
+    <div class="reading-card">
+      <p class="clue-text" id="clueText"></p>
+      <p class="buzz-hint" id="buzzHint">Press <kbd>Space</kbd> to buzz in</p>
+    </div>
+
+    <div class="answer-area" id="answerArea" hidden>
+      <input type="text" id="answerInput" placeholder="Type your answer (optional — for your own reference)" autocomplete="off">
+      <div class="controls">
+        <button id="revealBtn" class="primary-btn">Reveal Answer</button>
+      </div>
+
+      <div class="answer-reveal" id="answerReveal" hidden>
+        <div class="answer-box">
+          <span class="answer-box-label">Answer</span>
+          <p class="answer-box-text" id="answerText"></p>
+        </div>
+        <div class="bounce-note" id="bounceNote" hidden>↩ In a live match, a miss here bounces to the opposing team for the same 10 points.</div>
+        <p class="grade-prompt">Did you get it right?</p>
+        <div class="grade-buttons">
+          <button class="grade-btn grade-correct" id="gradeCorrectBtn">✅ Correct</button>
+          <button class="grade-btn grade-incorrect" id="gradeIncorrectBtn">❌ Incorrect</button>
+        </div>
+        <button id="nextBtn" class="primary-btn" hidden>Next Question →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY SCREEN -->
+  <section id="screen-summary" class="screen" hidden>
+    <div class="card summary-card">
+      <h2 id="summaryTitle">Round Complete</h2>
+      <p class="summary-stat" id="summaryStat"></p>
+      <button id="homeBtn" class="primary-btn">Back to Home</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
