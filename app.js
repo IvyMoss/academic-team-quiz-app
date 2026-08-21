@@ -67,9 +67,11 @@ function buildPools() {
 
 const pools = buildPools();
 
-ui.bankNote.textContent =
-  `Sample bank: ${TOSSUPS.length} toss-ups + ${DIRECTED.length} directed questions ` +
-  `(a real VHSL round is 15 + 10 + 15 — periods below are scaled to this demo bank).`;
+const isRegulationSize = pools.period1.length === 15 && pools.directed.length === 10 && pools.period2.length === 15;
+ui.bankNote.textContent = isRegulationSize
+  ? `Question bank: ${TOSSUPS.length} toss-ups + ${DIRECTED.length} directed questions — full regulation VHSL length (15 + 10 + 15).`
+  : `Question bank: ${TOSSUPS.length} toss-ups + ${DIRECTED.length} directed questions ` +
+    `(a real VHSL round is 15 + 10 + 15 — periods below are scaled to this bank's current size).`;
 ui.countPeriod1.textContent = `${pools.period1.length} question${pools.period1.length === 1 ? "" : "s"}`;
 ui.countDirected.textContent = `${pools.directed.length} question${pools.directed.length === 1 ? "" : "s"}`;
 ui.countPeriod2.textContent = `${pools.period2.length} question${pools.period2.length === 1 ? "" : "s"}`;
