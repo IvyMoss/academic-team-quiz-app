@@ -242,8 +242,8 @@ const BANK_NOVICE_TOSSUPS = [
       "This artist filled notebooks with mirror writing and sketches of flying machines and tanks.",
       "He painted a deteriorating mural of the Last Supper on a monastery wall in Milan.",
       "His anatomical study of a man inscribed in a circle and square is called Vitruvian Man.",
-      "He was an Italian Renaissance polymath.",
-      "For 10 points—name this artist who painted the Mona Lisa."
+      "He served Ludovico Sforza in Milan and died in France in 1519 as a guest of King Francis I.",
+      "For 10 points—name this Italian Renaissance polymath from the town of Vinci."
     ],
     answer: "Leonardo da Vinci",
     answerLine: "Leonardo da Vinci (accept Leonardo; do not accept \"da Vinci\" alone as it is not a surname, but prompt on it)"
@@ -467,7 +467,7 @@ const BANK_REGULAR_TOSSUPS = [
     clues: [
       "In this epic, the title character blinds a Cyclops named Polyphemus, a son of Poseidon, earning that god's wrath.",
       "A witch named Circe turns this hero's men into pigs on the island of Aeaea.",
-      "This hero is aided throughout by the goddess Athena and returns home disguised as a beggar.",
+      "This hero escapes the nymph Calypso after seven years and returns home disguised as a beggar.",
       "The hero's wife Penelope fends off suitors by unweaving a burial shroud each night.",
       "For 10 points—name this Homeric epic about Odysseus's ten-year journey home from the Trojan War."
     ],
@@ -609,7 +609,7 @@ const BANK_REGULAR_TOSSUPS = [
   {
     category: "History",
     clues: [
-      "This conflict's Cuban Missile Crisis of 1962 brought two superpowers to the brink of nuclear war.",
+      "The 1947 Truman Doctrine pledged U.S. support to Greece and Turkey early in this conflict.",
       "It featured a U.S. strategy of \"containment\" first articulated by diplomat George Kennan.",
       "Its most visible physical symbol was a wall built in Berlin in 1961.",
       "It was fought primarily between the United States and the Soviet Union.",
@@ -636,7 +636,7 @@ const BANK_REGULAR_TOSSUPS = [
       "This conflict began after the assassination of Archduke Franz Ferdinand in Sarajevo in 1914.",
       "It saw the first large-scale use of trench warfare and poison gas on the Western Front.",
       "The United States entered this conflict in 1917 partly due to the Zimmermann Telegram.",
-      "It ended with the Treaty of Versailles in 1919.",
+      "Fighting on its Western Front ended with the armistice of November 11, 1918.",
       "For 10 points—name this global conflict fought from 1914 to 1918."
     ],
     answer: "World War I",
@@ -648,7 +648,7 @@ const BANK_REGULAR_TOSSUPS = [
       "This period's art was patronized heavily by the Medici family of Florence.",
       "It saw the development of linear perspective by artists like Filippo Brunelleschi.",
       "It began in Italy in the 14th century and later spread throughout Europe.",
-      "Figures associated with this period include Leonardo da Vinci and Michelangelo.",
+      "Petrarch helped launch its humanist movement, and Machiavelli wrote The Prince during it.",
       "For 10 points—name this era of renewed interest in classical learning and art that followed the Middle Ages."
     ],
     answer: "The Renaissance",
@@ -839,7 +839,7 @@ const BANK_REGULAR_DIRECTED = [
   },
   {
     category: "Fine Arts",
-    question: "What Italian Renaissance artist painted the ceiling of the Sistine Chapel?",
+    question: "What Florentine artist sculpted the David and painted the ceiling of the Sistine Chapel?",
     answer: "Michelangelo",
     answerLine: "Michelangelo (Buonarroti)"
   },
@@ -1111,11 +1111,11 @@ const BANK_REGIONAL_TOSSUPS = [
   {
     category: "Fine Arts",
     clues: [
-      "This composer's ballet caused a near-riot at its 1913 Paris premiere with its pounding irregular rhythms.",
-      "He wrote The Firebird and Petrushka for Sergei Diaghilev's Ballets Russes.",
-      "He moved through neoclassical and, late in life, serial compositional styles.",
-      "That riot-provoking ballet depicts a pagan sacrificial rite.",
-      "For 10 points—name this Russian composer of The Rite of Spring."
+      "Late in life this composer adopted serial technique in works such as Agon and Threni.",
+      "His neoclassical period includes Pulcinella, based on music then attributed to Pergolesi, and the Symphony of Psalms.",
+      "He became a U.S. citizen in 1945 and was buried on the cemetery island of San Michele in Venice.",
+      "He wrote Petrushka, about a puppet who comes to life, for Sergei Diaghilev's Ballets Russes.",
+      "For 10 points—name this Russian-born composer of The Firebird."
     ],
     answer: "Igor Stravinsky",
     answerLine: "Igor Stravinsky"
@@ -1953,7 +1953,7 @@ BANK_NOVICE_TOSSUPS.push(...[
       "A winding landscape appears behind the seated subject of this painting.",
       "It is displayed at the Louvre Museum in Paris.",
       "Its subject is famous for an enigmatic smile.",
-      "For 10 points—name this portrait painted by Leonardo da Vinci."
+      "For 10 points—name this portrait, also called La Gioconda, often described as the most famous painting in the world."
     ],
     "answer": "The Mona Lisa",
     "answerLine": "Mona Lisa (accept La Gioconda or La Joconde)"
@@ -2316,7 +2316,7 @@ BANK_REGULAR_TOSSUPS.push(...[
       "The settlement of this confrontation included a secret U.S. agreement to remove missiles from Turkey.",
       "John F. Kennedy ordered a naval quarantine during it.",
       "The United States discovered Soviet nuclear missiles on an island south of Florida in 1962.",
-      "For 10 points—name this Cold War confrontation over missiles in Cuba."
+      "For 10 points—name this thirteen-day confrontation over Soviet missiles in Cuba."
     ],
     "answer": "The Cuban Missile Crisis",
     "answerLine": "Cuban Missile Crisis (accept October Crisis)"
@@ -2393,7 +2393,7 @@ BANK_REGULAR_TOSSUPS.push(...[
       "The World Meteorological Organization and UNEP established this body in 1988.",
       "It assesses published research rather than running its own climate experiments.",
       "Its assessment reports summarize the science, impacts, and mitigation of climate change.",
-      "For 10 points—name this United Nations climate-science assessment panel."
+      "For 10 points—name this climate-science assessment panel that shared the 2007 Nobel Peace Prize with Al Gore."
     ],
     "answer": "The IPCC",
     "answerLine": "IPCC (accept Intergovernmental Panel on Climate Change)"
@@ -2505,7 +2505,7 @@ BANK_REGULAR_DIRECTED.push(...[
   },
   {
     "category": "History",
-    "question": "What 1919 treaty imposed terms on Germany after World War I?",
+    "question": "What 1919 treaty, signed in a palace's Hall of Mirrors, imposed a war-guilt clause and reparations on Germany?",
     "answer": "The Treaty of Versailles",
     "answerLine": "Treaty of Versailles (accept Versailles)"
   },
@@ -2643,7 +2643,7 @@ BANK_REGIONAL_TOSSUPS.push(...[
   {
     "category": "Math",
     "clues": [
-      "Pascal's triangle gives the coefficients used in this theorem.",
+      "The coefficients in this theorem appear as rows of a triangular array in which each entry is the sum of the two above it.",
       "It uses combinations often written as n choose k.",
       "It expands a quantity such as x plus y raised to a nonnegative integer power.",
       "For 10 points—name this theorem for expanding powers of a two-term expression."
@@ -2744,7 +2744,7 @@ BANK_REGIONAL_TOSSUPS.push(...[
     "clues": [
       "This work opens with a bassoon playing in an unusually high register.",
       "Its scenario ends with a chosen maiden dancing herself to death.",
-      "Its 1913 Paris premiere featured choreography by Vaslav Nijinsky and music by Igor Stravinsky.",
+      "Its 1913 Paris premiere by the Ballets Russes, choreographed by Vaslav Nijinsky, provoked an infamous uproar.",
       "For 10 points—name this ballet about a pagan spring ritual."
     ],
     "answer": "The Rite of Spring",
@@ -3206,7 +3206,7 @@ BANK_STATE_TOSSUPS.push(...[
     "clues": [
       "In a Sumerian account, this goddess passes through seven gates and loses a garment or ornament at each.",
       "Her sister Ereshkigal rules the underworld to which she descends.",
-      "She is a Mesopotamian goddess associated with love and war, closely identified with the Akkadian Ishtar.",
+      "She is a Mesopotamian goddess of love and war associated with the planet Venus and worshipped at Uruk.",
       "For 10 points—name this Sumerian goddess."
     ],
     "answer": "Inanna",

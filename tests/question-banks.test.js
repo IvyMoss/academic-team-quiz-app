@@ -45,6 +45,46 @@ test('all banks contain 60 toss-ups and 20 directed questions with unique answer
   assert.equal(answers.size, 320);
 });
 
+// Two questions in the same bank can land in the same match, so one question's
+// text must not name another's answer (e.g. a "Stravinsky" toss-up whose
+// giveaway names The Rite of Spring, which is also an answer in that bank).
+// Pairs below were reviewed and are only word overlaps, not giveaways.
+const REVIEWED_OVERLAPS = new Set([
+  'novice: Water -> Mark Twain', // "water depth" in the pen-name clue
+  'novice: Water -> The Amazon River',
+  'novice: Water -> Antarctica',
+  'novice: Water -> Evaporation',
+  'novice: The heart -> The Wonderful Wizard of Oz', // the Tin Man wants a heart
+  'novice: Eight -> The Sun', // "eight minutes"; the directed question is about an octagon
+  'regular: Carbon -> Photosynthesis', // "carbon dioxide"
+  'regular: The Renaissance -> Langston Hughes', // "Harlem Renaissance"
+  'regular: Three -> The Pythagorean theorem',
+  'regular: Three -> Macbeth', // "three witches"; the directed answer is a basketball shot
+  'regular: The nucleus -> The electron', // atomic nucleus vs. the cell organelle
+  'regional: Beloved -> Don Quixote', // "a beloved named Dulcinea"
+]);
+
+test('no question names another answer from the same bank', () => {
+  const { BANKS } = load();
+  const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const leaks = [];
+  for (const bank of BANKS) {
+    const all = [...bank.tossups, ...bank.directed];
+    for (const a of all) {
+      const phrase = a.answer.replace(/^(the|a|an) /i, '').toLowerCase();
+      if (phrase.length < 5 || /^\d/.test(phrase)) continue;
+      const pattern = new RegExp(`\\b${escape(phrase)}\\b`);
+      for (const o of all) {
+        if (o === a) continue;
+        const text = (o.clues ? o.clues.join(' ') : o.question).toLowerCase();
+        const key = `${bank.id}: ${a.answer} -> ${o.answer}`;
+        if (pattern.test(text) && !REVIEWED_OVERLAPS.has(key)) leaks.push(key);
+      }
+    }
+  }
+  assert.deepEqual(leaks, []);
+});
+
 test('random matches preserve lengths, toss-up subject mix, and source data', () => {
   const { BANKS, buildPools, TOSSUP_CATEGORY_COUNTS } = load();
   const before = JSON.stringify(BANKS);

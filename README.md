@@ -32,18 +32,54 @@ labels are editorial estimates rather than tournament-tested calibrations.
 
 Question content lives in `questions.js`; random selection lives in
 `round-selection.js`; presentation and session behavior live in `app.js`.
-Increment the asset query versions in `index.html` when updating deployed files.
+
+After editing any CSS or JS, bump the asset versions in `index.html` before
+pushing so browsers and GitHub Pages don't serve stale cached copies:
+
+```sh
+npm run bump
+```
 
 ## Checks
 
 ```sh
-node --test tests/question-banks.test.js
+npm test
 ```
 
-Tests check bank sizes, question fields, globally unique canonical answer
-labels, 800 sampled full matches, within-match uniqueness, toss-up category
-counts, reachability of every question, source-bank immutability, and fresh
-selection when starting each round type again.
+`tests/question-banks.test.js` checks bank sizes, question fields, globally
+unique canonical answer labels, that no question names another answer in the
+same bank (since both could be drawn into one match), 800 sampled full matches,
+within-match uniqueness, toss-up category counts, reachability of every
+question, source-bank immutability, and fresh selection when starting each
+round type again.
+
+`tests/interaction.test.js` runs `app.js` against a fake DOM and clock to check
+that the BUZZ button and spacebar stop the read, the spacebar doesn't interfere
+with typing an answer, the button is inert during directed questions, and the
+answer timers auto-reveal at 8 s (toss-ups) and 15 s (directed) only when timer
+mode is on.
+
+## Editorial review — October 2026
+
+All 80 Regionals and State questions added in the expansion were checked
+clue-by-clue for factual accuracy; no factual errors were found. The review did
+fix cross-question giveaways, where one question named another answer from the
+same bank:
+
+- Regionals: the Igor Stravinsky toss-up named The Rite of Spring, and the Rite
+  of Spring toss-up named Stravinsky. The Stravinsky toss-up was rewritten
+  around his serial, neoclassical, and Ballets Russes works.
+- Novice: the Leonardo da Vinci and Mona Lisa toss-ups named each other.
+- Regular: the Cold War and Cuban Missile Crisis toss-ups named each other; the
+  World War I toss-up and the Treaty of Versailles directed question named
+  each other; the Renaissance toss-up named Michelangelo; the IPCC giveaway
+  named the United Nations; the Odyssey named Athena.
+- Regionals: the binomial theorem lead-in named Pascal, which hinted at the
+  directed answer "pascal".
+- State: an Inanna clue contained her accepted alternate answer, Ishtar.
+
+Novice and Regular-bank questions outside these fixes, and the original 30 + 10
+Regionals and State questions, were not re-audited in this pass.
 
 ## Reference spot checks for the expansion
 

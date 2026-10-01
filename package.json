@@ -1,0 +1,9 @@
+{
+  "name": "academic-team-quiz-app",
+  "private": true,
+  "description": "VHSL Scholastic Bowl practice app",
+  "scripts": {
+    "test": "node --test tests/question-banks.test.js tests/interaction.test.js",
+    "bump": "node scripts/bump-version.js"
+  }
+}
