@@ -7,9 +7,8 @@
  *   Period 2  — 15 toss-ups, pyramidal, buzz-in
  *
  * Questions come from questions.js, which exposes BANKS: a list of
- * difficulty-tiered sets, each a full 30 toss-ups + 10 directed questions.
- * Periods split a bank's toss-ups in half, so a 30-toss-up bank yields the
- * regulation 15 + 10 + 15. Smaller banks still work; periods just shrink.
+ * difficulty-tiered pools, each with 60 toss-ups + 20 directed questions.
+ * round-selection.js draws a fresh 15 + 10 + 15 match for each run.
  *
  * Buzzing is bound to both the spacebar and an on-screen BUZZ button so the
  * app is usable on phones and tablets.
@@ -75,15 +74,6 @@ function currentBank() {
   return BANKS.find((b) => b.id === currentBankId);
 }
 
-function buildPools(bank) {
-  const half = Math.ceil(bank.tossups.length / 2);
-  return {
-    period1: bank.tossups.slice(0, half).map((q) => ({ ...q, type: "tossup" })),
-    period2: bank.tossups.slice(half).map((q) => ({ ...q, type: "tossup" })),
-    directed: bank.directed.map((q) => ({ ...q, type: "directed" })),
-  };
-}
-
 function renderBankGrid() {
   ui.bankGrid.innerHTML = "";
   BANKS.forEach((bank) => {
@@ -117,15 +107,13 @@ function selectBank(id) {
 
 function updateBankInfo() {
   const bank = currentBank();
-  const regulation =
-    pools.period1.length === 15 && pools.directed.length === 10 && pools.period2.length === 15;
-  ui.bankNote.textContent = regulation
-    ? `${bank.name} (${bank.difficulty}): full regulation VHSL length — 15 + 10 + 15.`
-    : `${bank.name} (${bank.difficulty}): ${bank.tossups.length} toss-ups + ${bank.directed.length} directed ` +
-      `(a regulation round is 15 + 10 + 15 — periods are scaled to this bank).`;
-  ui.countPeriod1.textContent = `${pools.period1.length} questions`;
-  ui.countDirected.textContent = `${pools.directed.length} questions`;
-  ui.countPeriod2.textContent = `${pools.period2.length} questions`;
+  ui.bankNote.textContent =
+    `${bank.name} (${bank.difficulty}): each run draws a fresh random selection from ` +
+    `${bank.tossups.length} toss-ups and ${bank.directed.length} directed questions. ` +
+    `Full matches use 15 + 10 + 15, with no repeats within a match. Questions may recur in later runs.`;
+  ui.countPeriod1.textContent = "15 questions";
+  ui.countDirected.textContent = "10 questions";
+  ui.countPeriod2.textContent = "15 questions";
 }
 
 const ROUND_LABELS = {
@@ -166,6 +154,7 @@ function showScreen(name) {
 // ---- Starting / ending a round ----------------------------------------
 
 function startRound(roundKey) {
+  pools = buildPools(currentBank());
   let queue;
   if (roundKey === "full") {
     queue = [

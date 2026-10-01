@@ -1,9 +1,9 @@
 /**
  * VHSL-style practice question banks.
  *
- * Each bank is a full regulation-length set: 30 toss-ups (15 per period)
- * + 10 directed questions, with categories weighted to NAQT's HS subject
- * distribution (see academic-team.md, step 1).
+ * Each bank contains 60 toss-ups and 20 directed questions. Each run samples
+ * a regulation-length match of 30 toss-ups (15 per period) + 10 directed
+ * questions, preserving the original full-match category counts.
  *
  * TOSSUPS: pyramidal — `clues` runs hardest-clue-first, giveaway last
  * (steps 3-5). DIRECTED: single, non-pyramidal clue (step 6).
@@ -1734,6 +1734,1592 @@ const BANK_STATE_DIRECTED = [
     answerLine: "Thomas Hobbes"
   }
 ];
+
+// Additional practice questions: randomly sampled with the original questions.
+
+BANK_NOVICE_TOSSUPS.push(...[
+  {
+    "category": "Literature",
+    "clues": [
+      "A company led by Thorin Oakenshield hires this book's hero as a burglar.",
+      "Its hero wins a riddle contest against Gollum and finds a ring that makes him invisible.",
+      "The dragon Smaug guards treasure inside the Lonely Mountain in this book.",
+      "For 10 points—name this J. R. R. Tolkien novel about Bilbo Baggins."
+    ],
+    "answer": "The Hobbit",
+    "answerLine": "The Hobbit"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "In this novel, Edmund betrays his siblings after being offered Turkish delight.",
+      "Its villain makes a magical land endure winter without Christmas.",
+      "Lucy Pevensie enters Narnia through a piece of furniture, and the lion Aslan helps defeat the White Witch.",
+      "For 10 points—name this C. S. Lewis novel whose title ends with a wardrobe."
+    ],
+    "answer": "The Lion, the Witch and the Wardrobe",
+    "answerLine": "The Lion, the Witch and the Wardrobe"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "Fern saves a runt pig from being killed at the beginning of this novel.",
+      "Messages such as Some Pig appear above that pig's pen.",
+      "A spider helps save Wilbur by writing words in her web.",
+      "For 10 points—name this E. B. White children's novel named for that spider's creation."
+    ],
+    "answer": "Charlotte's Web",
+    "answerLine": "Charlotte's Web"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "A worried fish objects to the visitor's behavior in this book.",
+      "Thing One and Thing Two make a mess before the visitor cleans it up.",
+      "Sally and her brother are entertained on a rainy day by an animal wearing a striped hat.",
+      "For 10 points—name this rhyming children's book by Dr. Seuss."
+    ],
+    "answer": "The Cat in the Hat",
+    "answerLine": "The Cat in the Hat"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The heroine of this book wears silver shoes, unlike the ruby slippers in its famous film adaptation.",
+      "Her companions seek a brain, a heart, and courage.",
+      "Dorothy follows a yellow brick road with the Scarecrow, Tin Woodman, and Cowardly Lion.",
+      "For 10 points—name this L. Frank Baum novel set in Oz."
+    ],
+    "answer": "The Wonderful Wizard of Oz",
+    "answerLine": "The Wonderful Wizard of Oz (accept The Wizard of Oz)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Olympus Mons, an enormous volcano, is located on this planet.",
+      "Its two small moons are Phobos and Deimos.",
+      "Its reddish appearance comes from iron minerals, and it is the fourth planet from the Sun.",
+      "For 10 points—name this planet known as the Red Planet."
+    ],
+    "answer": "Mars",
+    "answerLine": "Mars"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "This force keeps natural satellites traveling around planets.",
+      "Near Earth's surface it gives freely falling objects an acceleration of about 9.8 meters per second squared.",
+      "It attracts objects with mass and keeps planets in orbit around the Sun.",
+      "For 10 points—name this force that makes an unsupported apple fall."
+    ],
+    "answer": "Gravity",
+    "answerLine": "gravity (accept gravitation)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Robert Hooke used this term after examining cork under a microscope.",
+      "Some organisms consist of only one of these units.",
+      "Their membranes enclose cytoplasm, and many contain a nucleus.",
+      "For 10 points—name the basic unit of living organisms."
+    ],
+    "answer": "The cell",
+    "answerLine": "cell (accept cells)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "This process can cool a surface because more energetic molecules escape from it.",
+      "It occurs at a liquid's surface even below the liquid's boiling point.",
+      "It helps puddles disappear and changes liquid water into water vapor.",
+      "For 10 points—name this surface process of a liquid becoming a gas."
+    ],
+    "answer": "Evaporation",
+    "answerLine": "evaporation; do not accept boiling"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "A compass needle aligns with a field associated with this phenomenon.",
+      "Iron and nickel can respond strongly to it.",
+      "Like poles repel, while opposite poles attract.",
+      "For 10 points—name this phenomenon demonstrated by a bar magnet."
+    ],
+    "answer": "Magnetism",
+    "answerLine": "magnetism (accept magnetic force)"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "For a rectangle, this quantity equals twice the sum of its length and width.",
+      "For a polygon, it is found by adding the lengths of all sides.",
+      "It measures distance around a shape rather than the space inside it.",
+      "For 10 points—name this boundary length of a plane figure."
+    ],
+    "answer": "The perimeter",
+    "answerLine": "perimeter; do not accept area"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "A zero value for this part makes an ordinary fraction undefined.",
+      "When adding fractions, these parts must be made equal.",
+      "In three-fourths, this part is four and tells how many equal parts form a whole.",
+      "For 10 points—name the bottom number of a fraction."
+    ],
+    "answer": "The denominator",
+    "answerLine": "denominator; do not accept numerator"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "During the Civil War, this woman helped guide the Combahee River Raid.",
+      "She repeatedly returned to the South after escaping slavery herself.",
+      "She led enslaved people to freedom through the Underground Railroad.",
+      "For 10 points—name this abolitionist sometimes called Moses."
+    ],
+    "answer": "Harriet Tubman",
+    "answerLine": "Harriet Tubman (accept Tubman)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This conflict included an American victory at Yorktown.",
+      "France supported the colonists against Great Britain.",
+      "The Declaration of Independence was issued during this war.",
+      "For 10 points—name the war in which the thirteen colonies won independence."
+    ],
+    "answer": "The American Revolution",
+    "answerLine": "American Revolution (accept American Revolutionary War or U.S. War of Independence)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This civilization used a writing system that included hieroglyphs.",
+      "Many of its rulers were buried with goods meant for an afterlife.",
+      "It built the pyramids at Giza and was ruled by pharaohs.",
+      "For 10 points—name this ancient civilization centered on the Nile."
+    ],
+    "answer": "Ancient Egypt",
+    "answerLine": "ancient Egypt (accept Egypt)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This ruler spent his final exile on the island of Saint Helena.",
+      "His 1812 invasion of Russia ended in a disastrous retreat.",
+      "He was defeated at Waterloo after ruling France as emperor.",
+      "For 10 points—name this French military leader whose surname was Bonaparte."
+    ],
+    "answer": "Napoleon Bonaparte",
+    "answerLine": "Napoleon Bonaparte (accept Napoleon I or Napoleon)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This woman's arrest helped spark a boycott lasting more than a year.",
+      "She was an activist in the NAACP before that arrest.",
+      "In 1955, she refused to give up her bus seat to a white passenger in Montgomery, Alabama.",
+      "For 10 points—name this civil rights activist."
+    ],
+    "answer": "Rosa Parks",
+    "answerLine": "Rosa Parks (accept Parks)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The Dust Bowl worsened hardship during this period.",
+      "Franklin Roosevelt's New Deal responded to this economic crisis.",
+      "A 1929 stock-market crash preceded this period of widespread unemployment.",
+      "For 10 points—name this severe economic downturn of the 1930s."
+    ],
+    "answer": "The Great Depression",
+    "answerLine": "Great Depression"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "This instrument's standard strings are tuned G, D, A, and E.",
+      "It is usually held beneath the chin and played with a bow.",
+      "It is the highest-pitched regular member of the orchestral string family.",
+      "For 10 points—name this four-string instrument often called a fiddle."
+    ],
+    "answer": "The violin",
+    "answerLine": "violin; do not accept viola"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "A winding landscape appears behind the seated subject of this painting.",
+      "It is displayed at the Louvre Museum in Paris.",
+      "Its subject is famous for an enigmatic smile.",
+      "For 10 points—name this portrait painted by Leonardo da Vinci."
+    ],
+    "answer": "The Mona Lisa",
+    "answerLine": "Mona Lisa (accept La Gioconda or La Joconde)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "In this art, dancers use positions numbered first through fifth.",
+      "Some performers wear pointe shoes that allow them to stand on the tips of their toes.",
+      "Swan Lake and The Nutcracker are examples of this form of dance.",
+      "For 10 points—name this classical dance form associated with tutus."
+    ],
+    "answer": "Ballet",
+    "answerLine": "ballet"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "The Ahaggar Mountains lie within this desert.",
+      "It stretches across countries including Algeria, Libya, and Egypt.",
+      "It is the largest hot desert and covers much of North Africa.",
+      "For 10 points—name this African desert."
+    ],
+    "answer": "The Sahara",
+    "answerLine": "Sahara (accept Sahara Desert)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "Hokkaido and Shikoku are among this country's main islands.",
+      "Mount Fuji rises on its largest island, Honshu.",
+      "Kyoto was once its capital, and Tokyo is its capital today.",
+      "For 10 points—name this East Asian island country."
+    ],
+    "answer": "Japan",
+    "answerLine": "Japan (accept Nippon or Nihon)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "This organization promotes childhood vaccination and nutrition.",
+      "Its name retains an acronym from its original emergency-fund name.",
+      "It is the United Nations agency focused on children's welfare.",
+      "For 10 points—name this agency known by the acronym UNICEF."
+    ],
+    "answer": "UNICEF",
+    "answerLine": "UNICEF (accept United Nations Children's Fund)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "Geothermal power and sustainably managed hydropower belong to this category.",
+      "Its sources are replenished by natural processes on human time scales.",
+      "Wind turbines and solar panels produce this kind of energy.",
+      "For 10 points—name this category of energy contrasted with finite fossil fuels."
+    ],
+    "answer": "Renewable energy",
+    "answerLine": "renewable energy (accept renewable power)"
+  },
+  {
+    "category": "Mythology",
+    "clues": [
+      "In Norse stories, this god rides in a chariot drawn by goats.",
+      "His hammer is called Mjolnir.",
+      "He is associated with storms and is a son of Odin.",
+      "For 10 points—name this Norse god of thunder."
+    ],
+    "answer": "Thor",
+    "answerLine": "Thor"
+  },
+  {
+    "category": "Social Science",
+    "clues": [
+      "In the United States, this count helps determine how House seats are apportioned.",
+      "The U.S. Constitution requires one every ten years.",
+      "It gathers information about the people living in a country.",
+      "For 10 points—name this official population count."
+    ],
+    "answer": "A census",
+    "answerLine": "census (accept population census)"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "clues": [
+      "This religion includes Catholic, Orthodox, and Protestant traditions.",
+      "Its scriptures include the New Testament.",
+      "Its central figure is Jesus of Nazareth.",
+      "For 10 points—name this religion whose followers are called Christians."
+    ],
+    "answer": "Christianity",
+    "answerLine": "Christianity; prompt on a specific Christian denomination"
+  },
+  {
+    "category": "Pop Culture / Sports",
+    "clues": [
+      "A player in this sport may be penalized for traveling or double dribbling.",
+      "Each team normally has five players on the court.",
+      "Players shoot a ball through an elevated hoop.",
+      "For 10 points—name this sport invented by James Naismith."
+    ],
+    "answer": "Basketball",
+    "answerLine": "basketball"
+  },
+  {
+    "category": "Misc/General Knowledge",
+    "clues": [
+      "A standard cell in this system contains six possible raised-dot positions.",
+      "Its inventor lost his sight as a child.",
+      "It lets readers identify letters and other symbols by touch.",
+      "For 10 points—name this reading and writing system named for Louis Braille."
+    ],
+    "answer": "Braille",
+    "answerLine": "Braille"
+  }
+]);
+
+BANK_NOVICE_DIRECTED.push(...[
+  {
+    "category": "Literature",
+    "question": "What honey-loving bear created by A. A. Milne has friends named Piglet and Eeyore?",
+    "answer": "Winnie-the-Pooh",
+    "answerLine": "Winnie-the-Pooh (accept Pooh)"
+  },
+  {
+    "category": "Literature",
+    "question": "To what ancient storyteller are fables such as The Tortoise and the Hare traditionally attributed?",
+    "answer": "Aesop",
+    "answerLine": "Aesop"
+  },
+  {
+    "category": "Science",
+    "question": "What gas makes up about 78 percent of Earth's atmosphere?",
+    "answer": "Nitrogen",
+    "answerLine": "nitrogen (accept N2)"
+  },
+  {
+    "category": "Science",
+    "question": "What natural satellite of Earth has phases including new, crescent, and full?",
+    "answer": "The Moon",
+    "answerLine": "the Moon (accept Luna)"
+  },
+  {
+    "category": "Math",
+    "question": "How many sides does an octagon have?",
+    "answer": "Eight",
+    "answerLine": "eight (accept 8)"
+  },
+  {
+    "category": "History",
+    "question": "What barrier dividing a German city opened in November 1989?",
+    "answer": "The Berlin Wall",
+    "answerLine": "Berlin Wall"
+  },
+  {
+    "category": "History",
+    "question": "Who was the principal author of the Declaration of Independence?",
+    "answer": "Thomas Jefferson",
+    "answerLine": "Thomas Jefferson (accept Jefferson)"
+  },
+  {
+    "category": "Fine Arts",
+    "question": "What brass instrument typically uses three valves and is often associated with jazz musician Louis Armstrong?",
+    "answer": "The trumpet",
+    "answerLine": "trumpet"
+  },
+  {
+    "category": "Geography",
+    "question": "What city is the capital of Canada?",
+    "answer": "Ottawa",
+    "answerLine": "Ottawa"
+  },
+  {
+    "category": "Mythology",
+    "question": "What Greek god of the sea carries a trident?",
+    "answer": "Poseidon",
+    "answerLine": "Poseidon; do not accept Neptune"
+  }
+]);
+
+BANK_REGULAR_TOSSUPS.push(...[
+  {
+    "category": "Literature",
+    "clues": [
+      "The horse Boxer is sent away after becoming too weak to work in this novel.",
+      "The pigs Napoleon and Snowball struggle for control after a rebellion.",
+      "Its animals discover that some animals are more equal than others.",
+      "For 10 points—name this George Orwell novella about animals taking over a farm."
+    ],
+    "answer": "Animal Farm",
+    "answerLine": "Animal Farm"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The heroine of this novel attends the harsh Lowood School.",
+      "She becomes a governess at Thornfield Hall, where Bertha Mason is hidden.",
+      "She falls in love with Edward Rochester but refuses to become his mistress.",
+      "For 10 points—name this Charlotte Bronte novel named for its heroine."
+    ],
+    "answer": "Jane Eyre",
+    "answerLine": "Jane Eyre"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The ship in this novel has a harpooner named Queequeg.",
+      "Its narrator, Ishmael, survives by floating on a coffin.",
+      "Captain Ahab commands the Pequod while pursuing a white whale.",
+      "For 10 points—name this Herman Melville novel."
+    ],
+    "answer": "Moby-Dick",
+    "answerLine": "Moby-Dick (accept Moby Dick or The Whale)"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "Priam visits an enemy camp to recover his son's body near the end of this epic.",
+      "Patroclus dies after wearing another warrior's armor.",
+      "It centers on Achilles' anger during the Trojan War.",
+      "For 10 points—name this Homeric epic about the war at Troy."
+    ],
+    "answer": "The Iliad",
+    "answerLine": "The Iliad; do not accept The Odyssey"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "This poet imagines a small cabin and nine bean rows on a lake island.",
+      "Another of his poems describes a rough beast moving toward Bethlehem.",
+      "He wrote The Lake Isle of Innisfree and The Second Coming.",
+      "For 10 points—name this Irish Nobel-winning poet."
+    ],
+    "answer": "William Butler Yeats",
+    "answerLine": "William Butler Yeats (accept Yeats or W. B. Yeats)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "This mechanism favors heritable traits that increase reproductive success in a particular environment.",
+      "Alfred Russel Wallace independently developed an account of it.",
+      "Charles Darwin used it to explain adaptation in On the Origin of Species.",
+      "For 10 points—name this process often summarized as survival of the fittest."
+    ],
+    "answer": "Natural selection",
+    "answerLine": "natural selection; prompt on evolution"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "J. J. Thomson identified this particle through experiments with cathode rays.",
+      "Its mass is much smaller than that of a proton.",
+      "It has a negative electric charge and occupies orbitals around an atomic nucleus.",
+      "For 10 points—name this negatively charged subatomic particle."
+    ],
+    "answer": "The electron",
+    "answerLine": "electron"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Dmitri Mendeleev left gaps in an early version of this arrangement.",
+      "Its columns are called groups, and its rows are called periods.",
+      "The modern version arranges chemical elements by increasing atomic number.",
+      "For 10 points—name this chart of the elements."
+    ],
+    "answer": "The periodic table",
+    "answerLine": "periodic table (accept periodic table of the elements)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "These structures contain both RNA and proteins.",
+      "Some attach to the rough endoplasmic reticulum, while others remain free in the cytoplasm.",
+      "They translate messenger RNA into chains of amino acids.",
+      "For 10 points—name these cellular structures that synthesize proteins."
+    ],
+    "answer": "Ribosomes",
+    "answerLine": "ribosomes (accept ribosome)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Snell's law relates angles in this phenomenon.",
+      "It occurs when a wave changes speed while passing between media.",
+      "It helps explain why a straw appears bent at the surface of water.",
+      "For 10 points—name this bending of light as it enters a different medium."
+    ],
+    "answer": "Refraction",
+    "answerLine": "refraction; do not accept reflection"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "The expression under the radical in this formula is the discriminant.",
+      "Its denominator is twice the coefficient of the squared term.",
+      "It gives x as negative b plus or minus the square root of b squared minus four ac, all over two a.",
+      "For 10 points—name this formula for solving a degree-two equation."
+    ],
+    "answer": "The quadratic formula",
+    "answerLine": "quadratic formula"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "For an even-sized data set, this statistic averages two central observations.",
+      "It is generally less sensitive to extreme outliers than the mean.",
+      "To find it, arrange the values in order and locate the middle.",
+      "For 10 points—name this measure of central tendency."
+    ],
+    "answer": "The median",
+    "answerLine": "median; do not accept mean or mode"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The Peace of Augsburg recognized a division associated with this movement.",
+      "John Calvin and Huldrych Zwingli were among its leaders.",
+      "Martin Luther's Ninety-five Theses challenged practices of the Catholic Church.",
+      "For 10 points—name this sixteenth-century religious reform movement."
+    ],
+    "answer": "The Protestant Reformation",
+    "answerLine": "Protestant Reformation (accept Reformation)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The spinning jenny and power loom contributed to this transformation.",
+      "Steam engines helped power mines, factories, and transportation.",
+      "It began in Britain and shifted much production from hand labor to machinery.",
+      "For 10 points—name this transition to industrial manufacturing."
+    ],
+    "answer": "The Industrial Revolution",
+    "answerLine": "Industrial Revolution"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This ruler was born with the name Temujin.",
+      "He united steppe tribes and used highly mobile cavalry armies.",
+      "His conquests began the expansion of the Mongol Empire.",
+      "For 10 points—name this founder of the Mongol Empire."
+    ],
+    "answer": "Genghis Khan",
+    "answerLine": "Genghis Khan (accept Chinggis Khan or Temujin)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "Lewis and Clark explored lands acquired in this transaction.",
+      "Its price was fifteen million dollars.",
+      "In 1803, the United States bought a vast territory from Napoleon's France.",
+      "For 10 points—name this purchase that roughly doubled the size of the United States."
+    ],
+    "answer": "The Louisiana Purchase",
+    "answerLine": "Louisiana Purchase"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The settlement of this confrontation included a secret U.S. agreement to remove missiles from Turkey.",
+      "John F. Kennedy ordered a naval quarantine during it.",
+      "The United States discovered Soviet nuclear missiles on an island south of Florida in 1962.",
+      "For 10 points—name this Cold War confrontation over missiles in Cuba."
+    ],
+    "answer": "The Cuban Missile Crisis",
+    "answerLine": "Cuban Missile Crisis (accept October Crisis)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The Bayeux Tapestry depicts events leading to this battle.",
+      "Harold Godwinson was killed during it.",
+      "William of Normandy defeated the English army in 1066.",
+      "For 10 points—name this battle that began the Norman conquest of England."
+    ],
+    "answer": "The Battle of Hastings",
+    "answerLine": "Battle of Hastings (accept Hastings)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "An exhibition at photographer Nadar's studio helped launch this movement in 1874.",
+      "Its painters often explored changing light through loose, visible brushwork.",
+      "Claude Monet's Impression, Sunrise helped give the movement its name.",
+      "For 10 points—name this art movement associated with Monet and Renoir."
+    ],
+    "answer": "The Impressionist movement",
+    "answerLine": "Impressionism (accept Impressionist movement)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "This composer's final symphony is nicknamed the Pathetique.",
+      "His 1812 Overture famously uses cannon effects.",
+      "He composed the music for Swan Lake and The Nutcracker.",
+      "For 10 points—name this Russian composer."
+    ],
+    "answer": "Pyotr Ilyich Tchaikovsky",
+    "answerLine": "Pyotr Ilyich Tchaikovsky (accept Tchaikovsky)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "Aconcagua is the highest peak of this mountain range.",
+      "It runs through countries including Peru and Chile.",
+      "It extends along the western edge of South America.",
+      "For 10 points—name this long South American mountain range."
+    ],
+    "answer": "The Andes",
+    "answerLine": "Andes (accept Andes Mountains)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "The Pillars of Hercules traditionally marked the sides of this passage.",
+      "Spain lies to its north and Morocco to its south.",
+      "It connects the Atlantic Ocean with the Mediterranean Sea.",
+      "For 10 points—name this strait at the western entrance to the Mediterranean."
+    ],
+    "answer": "The Strait of Gibraltar",
+    "answerLine": "Strait of Gibraltar (accept Gibraltar Strait; prompt on Gibraltar)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "This orbital laboratory includes modules named Zarya and Unity.",
+      "Its construction has involved agencies including NASA, ESA, and JAXA.",
+      "Astronauts live aboard it while conducting experiments in low Earth orbit.",
+      "For 10 points—name this multinational space station."
+    ],
+    "answer": "The International Space Station",
+    "answerLine": "International Space Station (accept ISS)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "The World Meteorological Organization and UNEP established this body in 1988.",
+      "It assesses published research rather than running its own climate experiments.",
+      "Its assessment reports summarize the science, impacts, and mitigation of climate change.",
+      "For 10 points—name this United Nations climate-science assessment panel."
+    ],
+    "answer": "The IPCC",
+    "answerLine": "IPCC (accept Intergovernmental Panel on Climate Change)"
+  },
+  {
+    "category": "Mythology",
+    "clues": [
+      "In one myth, this goddess transforms Arachne after a weaving contest.",
+      "An olive tree is associated with her contest for a city's patronage.",
+      "She is a Greek goddess of wisdom whose major temple is the Parthenon.",
+      "For 10 points—name this patron goddess of Athens."
+    ],
+    "answer": "Athena",
+    "answerLine": "Athena; do not accept Minerva"
+  },
+  {
+    "category": "Social Science",
+    "clues": [
+      "This concept applies even when no money changes hands.",
+      "Choosing to spend an hour studying can incur it by giving up an hour of paid work.",
+      "It is the value of the next-best alternative forgone when a choice is made.",
+      "For 10 points—name this economic cost of choosing one option over another."
+    ],
+    "answer": "Opportunity cost",
+    "answerLine": "opportunity cost"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "clues": [
+      "This thinker emphasized ren, often translated as humaneness, and li, associated with ritual.",
+      "His teachings stress ethical relationships and proper conduct.",
+      "His sayings are collected in the Analects.",
+      "For 10 points—name this influential Chinese teacher and philosopher."
+    ],
+    "answer": "Confucius",
+    "answerLine": "Confucius (accept Kongzi or Kong Fuzi)"
+  },
+  {
+    "category": "Pop Culture / Sports",
+    "clues": [
+      "This athlete's number 42 was retired throughout Major League Baseball.",
+      "He played for the Kansas City Monarchs before joining a major-league club.",
+      "In 1947, he broke modern MLB's color barrier with the Brooklyn Dodgers.",
+      "For 10 points—name this pioneering baseball player."
+    ],
+    "answer": "Jackie Robinson",
+    "answerLine": "Jackie Robinson (accept Robinson)"
+  },
+  {
+    "category": "Pop Culture / Sports",
+    "clues": [
+      "En passant is a special capture in this game.",
+      "Castling moves a king and a rook in a single turn.",
+      "Its pieces include bishops, knights, queens, and pawns on a 64-square board.",
+      "For 10 points—name this game in which checkmate ends play."
+    ],
+    "answer": "Chess",
+    "answerLine": "chess"
+  },
+  {
+    "category": "Misc/General Knowledge",
+    "clues": [
+      "Its broad classes include the 500s for science and 800s for literature.",
+      "It divides subjects using numerical subdivisions.",
+      "Libraries use it to assign nonfiction books numbers for shelf arrangement.",
+      "For 10 points—name this classification system devised by Melvil Dewey."
+    ],
+    "answer": "The Dewey Decimal Classification",
+    "answerLine": "Dewey Decimal Classification (accept Dewey Decimal System; prompt on Dewey)"
+  }
+]);
+
+BANK_REGULAR_DIRECTED.push(...[
+  {
+    "category": "Literature",
+    "question": "What Geoffrey Chaucer work presents stories told by pilgrims traveling to Thomas Becket's shrine?",
+    "answer": "The Canterbury Tales",
+    "answerLine": "The Canterbury Tales"
+  },
+  {
+    "category": "Literature",
+    "question": "What Harlem Renaissance poet wrote The Negro Speaks of Rivers?",
+    "answer": "Langston Hughes",
+    "answerLine": "Langston Hughes (accept Hughes)"
+  },
+  {
+    "category": "Science",
+    "question": "What membrane-bound organelle houses most of a eukaryotic cell's DNA?",
+    "answer": "The nucleus",
+    "answerLine": "cell nucleus (accept nucleus)"
+  },
+  {
+    "category": "Science",
+    "question": "What SI unit of force equals one kilogram meter per second squared?",
+    "answer": "The newton",
+    "answerLine": "newton (accept newtons)"
+  },
+  {
+    "category": "Math",
+    "question": "What function is the inverse of an exponential function with the same base?",
+    "answer": "The logarithm",
+    "answerLine": "logarithm (accept log)"
+  },
+  {
+    "category": "History",
+    "question": "What ship brought the Pilgrims to New England in 1620?",
+    "answer": "The Mayflower",
+    "answerLine": "Mayflower"
+  },
+  {
+    "category": "History",
+    "question": "What 1919 treaty imposed terms on Germany after World War I?",
+    "answer": "The Treaty of Versailles",
+    "answerLine": "Treaty of Versailles (accept Versailles)"
+  },
+  {
+    "category": "Fine Arts",
+    "question": "What Norwegian artist painted The Scream?",
+    "answer": "Edvard Munch",
+    "answerLine": "Edvard Munch (accept Munch)"
+  },
+  {
+    "category": "Geography",
+    "question": "What river flows past St. Louis and New Orleans before emptying into the Gulf of Mexico?",
+    "answer": "The Mississippi River",
+    "answerLine": "Mississippi River (accept Mississippi)"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "question": "What religion has the Five Pillars and regards the Quran as its central scripture?",
+    "answer": "Islam",
+    "answerLine": "Islam"
+  }
+]);
+
+BANK_REGIONAL_TOSSUPS.push(...[
+  {
+    "category": "Literature",
+    "clues": [
+      "The first section of this novel is narrated by Benjy, whose memories do not follow chronological order.",
+      "Other sections focus on Quentin, Jason, and the household servant Dilsey.",
+      "It depicts the decline of the Compson family in Mississippi.",
+      "For 10 points—name this William Faulkner novel whose title comes from Macbeth."
+    ],
+    "answer": "The Sound and the Fury",
+    "answerLine": "The Sound and the Fury"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "A wedding guest is detained by the narrator of this poem.",
+      "The narrator's crew dies after an encounter with Death and Life-in-Death.",
+      "A sailor shoots an albatross and must wear it around his neck.",
+      "For 10 points—name this Samuel Taylor Coleridge poem about a cursed sailor."
+    ],
+    "answer": "The Rime of the Ancient Mariner",
+    "answerLine": "The Rime of the Ancient Mariner (accept Rime of the Ancient Mariner)"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The narrator of this novel lives in a basement illuminated by 1,369 light bulbs.",
+      "He joins the Brotherhood after moving to Harlem.",
+      "Its unnamed Black narrator describes being socially unseen rather than physically transparent.",
+      "For 10 points—name this Ralph Ellison novel."
+    ],
+    "answer": "Invisible Man",
+    "answerLine": "Invisible Man; do not accept The Invisible Man by H. G. Wells"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "A barber's basin is mistaken for the helmet of Mambrino in this novel.",
+      "Its protagonist rides Rocinante and imagines a beloved named Dulcinea.",
+      "Sancho Panza accompanies a knight who attacks windmills as if they were giants.",
+      "For 10 points—name this Miguel de Cervantes novel."
+    ],
+    "answer": "Don Quixote",
+    "answerLine": "Don Quixote (accept Don Quijote)"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "Krogstad threatens to expose a forged signature in this play.",
+      "Its protagonist borrowed money to finance a trip for her husband's health.",
+      "Nora leaves Torvald Helmer in its famous final scene.",
+      "For 10 points—name this Henrik Ibsen play about Nora's marriage."
+    ],
+    "answer": "A Doll's House",
+    "answerLine": "A Doll's House (accept A Doll House)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Oxaloacetate is regenerated at the end of this metabolic pathway.",
+      "It produces reduced electron carriers including NADH and FADH2.",
+      "Acetyl-CoA enters a sequence of reactions associated with aerobic cellular respiration.",
+      "For 10 points—name this cycle also called the citric acid cycle."
+    ],
+    "answer": "The Krebs cycle",
+    "answerLine": "Krebs cycle (accept citric acid cycle or tricarboxylic acid cycle or TCA cycle)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "In this process, net movement tends toward the side with lower water potential.",
+      "A selectively permeable membrane separates the solutions involved.",
+      "It can cause a cell placed in a hypotonic solution to swell.",
+      "For 10 points—name this movement of water across a selectively permeable membrane."
+    ],
+    "answer": "Osmosis",
+    "answerLine": "osmosis; do not accept diffusion alone"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "This relation combines pressure, volume, temperature, and amount of substance.",
+      "Its constant R can be expressed in joules per mole-kelvin.",
+      "It is written PV equals nRT.",
+      "For 10 points—name this equation describing the behavior of an ideal gas."
+    ],
+    "answer": "The ideal gas law",
+    "answerLine": "ideal gas law (accept PV equals nRT)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Increasing light intensity below a threshold frequency does not produce this effect in the usual one-photon model.",
+      "Einstein explained it using light quanta with energy proportional to frequency.",
+      "It ejects electrons from a material when light strikes it.",
+      "For 10 points—name this effect central to the development of quantum theory."
+    ],
+    "answer": "The photoelectric effect",
+    "answerLine": "photoelectric effect"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Its smooth form participates in lipid synthesis and calcium storage.",
+      "Its rough form has ribosomes attached to its surface.",
+      "It is a membrane network connected to the nuclear envelope in eukaryotic cells.",
+      "For 10 points—name this organelle with rough and smooth forms."
+    ],
+    "answer": "The endoplasmic reticulum",
+    "answerLine": "endoplasmic reticulum (accept ER; accept rough ER or smooth ER after the last clue)"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "Pascal's triangle gives the coefficients used in this theorem.",
+      "It uses combinations often written as n choose k.",
+      "It expands a quantity such as x plus y raised to a nonnegative integer power.",
+      "For 10 points—name this theorem for expanding powers of a two-term expression."
+    ],
+    "answer": "The binomial theorem",
+    "answerLine": "binomial theorem"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "A zero value for this quantity means a square matrix is singular.",
+      "For a two-by-two matrix, it equals ad minus bc.",
+      "A nonzero value indicates that the matrix has an inverse.",
+      "For 10 points—name this scalar quantity calculated from a square matrix."
+    ],
+    "answer": "The determinant",
+    "answerLine": "determinant"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This event led to the English Bill of Rights of 1689.",
+      "James II fled after a foreign army landed in England.",
+      "William of Orange and Mary replaced James on the English throne.",
+      "For 10 points—name this revolution of 1688."
+    ],
+    "answer": "The Glorious Revolution",
+    "answerLine": "Glorious Revolution (accept Revolution of 1688)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The first of these conflicts ended with the Treaty of Nanjing.",
+      "That treaty ceded Hong Kong Island to Britain.",
+      "They arose from disputes over trade, sovereignty, and a narcotic sold into Qing China.",
+      "For 10 points—name these nineteenth-century wars involving China and Western powers."
+    ],
+    "answer": "The Opium Wars",
+    "answerLine": "Opium Wars (accept First Opium War or Second Opium War as appropriate; prompt on Anglo-Chinese wars)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The plan for this fleet depended on linking up with the Duke of Parma's forces.",
+      "English fireships disrupted its anchorage before the Battle of Gravelines.",
+      "Philip II sent it against Elizabeth I's England in 1588.",
+      "For 10 points—name this Spanish invasion fleet."
+    ],
+    "answer": "The Spanish Armada",
+    "answerLine": "Spanish Armada (accept Armada of 1588; prompt on armada)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "Fighting at Freeman's Farm and Bemis Heights formed part of this campaign.",
+      "John Burgoyne surrendered his army after the American victories.",
+      "The outcome helped persuade France to ally openly with the United States.",
+      "For 10 points—name this 1777 Revolutionary War turning point in New York."
+    ],
+    "answer": "The Battle of Saratoga",
+    "answerLine": "Battle of Saratoga (accept Battles of Saratoga or Saratoga)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "A provisional government led by Alexander Kerensky held power during this upheaval.",
+      "The abdication of Nicholas II was followed months later by another seizure of power.",
+      "Lenin's Bolsheviks took control in its October phase.",
+      "For 10 points—name this 1917 upheaval that ended tsarist rule and brought the Bolsheviks to power."
+    ],
+    "answer": "The Russian Revolution",
+    "answerLine": "Russian Revolution (accept Russian Revolutions of 1917; accept October Revolution after the last clue)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "Bahadur Shah II became a symbolic leader of this uprising.",
+      "Controversy over greased rifle cartridges helped spark it among soldiers.",
+      "It contributed to the end of East India Company rule and the beginning of direct British Crown rule.",
+      "For 10 points—name this 1857 rebellion in India."
+    ],
+    "answer": "The Indian Rebellion of 1857",
+    "answerLine": "Indian Rebellion of 1857 (accept Sepoy Rebellion or Sepoy Mutiny or First War of Indian Independence)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "A lute with a broken string sits among scientific and musical objects in this painting.",
+      "It portrays Jean de Dinteville and Georges de Selve.",
+      "A distorted skull stretches across its foreground and becomes recognizable from an angle.",
+      "For 10 points—name this Hans Holbein the Younger double portrait."
+    ],
+    "answer": "The Ambassadors",
+    "answerLine": "The Ambassadors"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "This work opens with a bassoon playing in an unusually high register.",
+      "Its scenario ends with a chosen maiden dancing herself to death.",
+      "Its 1913 Paris premiere featured choreography by Vaslav Nijinsky and music by Igor Stravinsky.",
+      "For 10 points—name this ballet about a pagan spring ritual."
+    ],
+    "answer": "The Rite of Spring",
+    "answerLine": "The Rite of Spring (accept Le Sacre du printemps)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "This artist created the Detroit Industry murals.",
+      "His Rockefeller Center mural was destroyed after controversy over its depiction of Lenin.",
+      "He was a Mexican muralist married to Frida Kahlo.",
+      "For 10 points—name this painter."
+    ],
+    "answer": "Diego Rivera",
+    "answerLine": "Diego Rivera (accept Rivera)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "Tonle Sap's seasonal flow reversal is connected to this river's flood cycle.",
+      "It passes through or along Laos, Thailand, and Cambodia.",
+      "Its large delta lies in southern Vietnam.",
+      "For 10 points—name this major Southeast Asian river."
+    ],
+    "answer": "The Mekong River",
+    "answerLine": "Mekong River (accept Mekong)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "The ALMA telescope array is situated in this desert.",
+      "The Humboldt Current and rain shadows contribute to its aridity.",
+      "It lies primarily in northern Chile along the Pacific side of South America.",
+      "For 10 points—name this extremely dry desert."
+    ],
+    "answer": "The Atacama Desert",
+    "answerLine": "Atacama Desert (accept Atacama)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "This organization succeeded the institutional framework of GATT in 1995.",
+      "It provides a forum for negotiations and disputes over international trade rules.",
+      "Its headquarters are in Geneva.",
+      "For 10 points—name this global trade organization abbreviated WTO."
+    ],
+    "answer": "The World Trade Organization",
+    "answerLine": "World Trade Organization (accept WTO)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "This organization's headquarters are in Addis Ababa.",
+      "It succeeded the Organization of African Unity in 2002.",
+      "Its members cooperate on peace, development, and integration across Africa.",
+      "For 10 points—name this continental organization abbreviated AU."
+    ],
+    "answer": "The African Union",
+    "answerLine": "African Union (accept AU; do not accept Organization of African Unity)"
+  },
+  {
+    "category": "Mythology",
+    "clues": [
+      "Pomegranate seeds tie this goddess to the underworld.",
+      "Her mother's grief is associated with the loss of vegetation.",
+      "She is the daughter of Demeter and queen alongside Hades.",
+      "For 10 points—name this Greek goddess whose story helps explain the seasons."
+    ],
+    "answer": "Persephone",
+    "answerLine": "Persephone (accept Kore; do not accept Proserpina)"
+  },
+  {
+    "category": "Social Science",
+    "clues": [
+      "This principle allows mutually beneficial trade even when one producer is more efficient at making everything.",
+      "David Ricardo explained it using trade between England and Portugal.",
+      "A producer has it when making a good carries a lower opportunity cost.",
+      "For 10 points—name this economic basis for specialization and trade."
+    ],
+    "answer": "Comparative advantage",
+    "answerLine": "comparative advantage; do not accept absolute advantage"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "clues": [
+      "John Stuart Mill distinguished higher and lower pleasures within this tradition.",
+      "Jeremy Bentham proposed assessing pleasures and pains to guide decisions.",
+      "It judges actions by their contribution to overall happiness or well-being.",
+      "For 10 points—name this ethical theory associated with the greatest happiness principle."
+    ],
+    "answer": "Utilitarianism",
+    "answerLine": "utilitarianism; prompt on consequentialism"
+  },
+  {
+    "category": "Pop Culture / Sports",
+    "clues": [
+      "Its second day includes the pole vault, javelin throw, and a 1,500-meter race.",
+      "Performances are converted to points rather than simply counting event wins.",
+      "It combines ten track-and-field events, traditionally spread over two days.",
+      "For 10 points—name this ten-event athletic competition."
+    ],
+    "answer": "The decathlon",
+    "answerLine": "decathlon; do not accept heptathlon"
+  },
+  {
+    "category": "Misc/General Knowledge",
+    "clues": [
+      "Oil-based ink and cast metal type were important parts of this European technology.",
+      "An early major product was a forty-two-line Bible.",
+      "A fifteenth-century craftsman in Mainz developed the system that made books easier to reproduce.",
+      "For 10 points—name this printing technology associated with Johannes Gutenberg."
+    ],
+    "answer": "The Gutenberg printing press",
+    "answerLine": "Gutenberg printing press (accept movable-type printing press; prompt on printing press)"
+  }
+]);
+
+BANK_REGIONAL_DIRECTED.push(...[
+  {
+    "category": "Literature",
+    "question": "What Sophocles tragedy follows a king investigating a plague who discovers he killed his father and married his mother?",
+    "answer": "Oedipus Rex",
+    "answerLine": "Oedipus Rex (accept Oedipus the King or Oedipus Tyrannus)"
+  },
+  {
+    "category": "Literature",
+    "question": "What Nigerian author wrote Things Fall Apart?",
+    "answer": "Chinua Achebe",
+    "answerLine": "Chinua Achebe (accept Achebe)"
+  },
+  {
+    "category": "Science",
+    "question": "What SI unit of pressure equals one newton per square meter?",
+    "answer": "The pascal",
+    "answerLine": "pascal (accept pascals or Pa)"
+  },
+  {
+    "category": "Science",
+    "question": "What fundamental interaction binds quarks and, through its residual effect, helps hold atomic nuclei together?",
+    "answer": "The strong nuclear force",
+    "answerLine": "strong nuclear force (accept strong interaction or strong force)"
+  },
+  {
+    "category": "Math",
+    "question": "What is the measure of each acute angle in an isosceles right triangle?",
+    "answer": "Forty-five degrees",
+    "answerLine": "45 degrees (accept pi over four radians)"
+  },
+  {
+    "category": "History",
+    "question": "What 1598 edict issued by Henry IV granted French Huguenots limited religious toleration?",
+    "answer": "The Edict of Nantes",
+    "answerLine": "Edict of Nantes"
+  },
+  {
+    "category": "History",
+    "question": "What canal, opened in 1869, links the Mediterranean Sea to the Red Sea?",
+    "answer": "The Suez Canal",
+    "answerLine": "Suez Canal (accept Suez)"
+  },
+  {
+    "category": "Fine Arts",
+    "question": "What Austrian artist used gold leaf in The Kiss?",
+    "answer": "Gustav Klimt",
+    "answerLine": "Gustav Klimt (accept Klimt)"
+  },
+  {
+    "category": "Geography",
+    "question": "What strait separates the Malay Peninsula from Sumatra?",
+    "answer": "The Strait of Malacca",
+    "answerLine": "Strait of Malacca (accept Malacca Strait; prompt on Malacca)"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "question": "What French philosopher developed methodic doubt and the argument commonly expressed as I think, therefore I am?",
+    "answer": "Rene Descartes",
+    "answerLine": "Rene Descartes (accept Descartes)"
+  }
+]);
+
+BANK_STATE_TOSSUPS.push(...[
+  {
+    "category": "Literature",
+    "clues": [
+      "The commentator in this novel claims connections to the imaginary kingdom of Zembla.",
+      "Charles Kinbote supplies an unreliable commentary on a 999-line poem.",
+      "John Shade is the poet whose work gives the novel its title.",
+      "For 10 points—name this Vladimir Nabokov novel structured as a poem and commentary."
+    ],
+    "answer": "Pale Fire",
+    "answerLine": "Pale Fire"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The poet Ivan Bezdomny witnesses an encounter that leads to Berlioz's death in this novel.",
+      "A talking cat named Behemoth belongs to Woland's entourage.",
+      "It interweaves a visit by the devil to Moscow with a story of Pontius Pilate.",
+      "For 10 points—name this Mikhail Bulgakov novel named for a writer and his lover."
+    ],
+    "answer": "The Master and Margarita",
+    "answerLine": "The Master and Margarita"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The Nisus and Euryalus episode appears in this epic's war narrative.",
+      "Its hero visits the underworld with the Cumaean Sibyl and leaves Dido in Carthage.",
+      "A Trojan survivor travels to Italy to become an ancestor of the Romans.",
+      "For 10 points—name this Latin epic by Virgil about Aeneas."
+    ],
+    "answer": "The Aeneid",
+    "answerLine": "The Aeneid"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "This writer assigned distinct biographies and styles to Alberto Caeiro and Ricardo Reis.",
+      "Alvaro de Campos was another of his literary heteronyms.",
+      "The Book of Disquiet is associated with his semi-heteronym Bernardo Soares.",
+      "For 10 points—name this Portuguese poet known for writing under multiple invented identities."
+    ],
+    "answer": "Fernando Pessoa",
+    "answerLine": "Fernando Pessoa (accept Pessoa)"
+  },
+  {
+    "category": "Literature",
+    "clues": [
+      "The student Trofimov advocates leaving the past behind in this play.",
+      "Lopakhin buys an estate after suggesting that its land be developed for summer cottages.",
+      "Ranevskaya loses the family property, and sounds of axes mark the destruction of its trees.",
+      "For 10 points—name this Anton Chekhov play about an orchard."
+    ],
+    "answer": "The Cherry Orchard",
+    "answerLine": "The Cherry Orchard (accept Vishnyovy sad)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Antisymmetric wavefunctions under exchange underlie this rule for identical particles.",
+      "It applies to fermions but does not forbid bosons from sharing a state.",
+      "In an atom, no two electrons can have the same set of four quantum numbers.",
+      "For 10 points—name this quantum rule named for Wolfgang Pauli."
+    ],
+    "answer": "The Pauli exclusion principle",
+    "answerLine": "Pauli exclusion principle (accept exclusion principle or Pauli principle)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "In this model, the reaction rate reaches half of V-max when substrate concentration equals K-m.",
+      "Its standard form has substrate concentration in both the numerator and denominator.",
+      "It models the saturating dependence of enzyme reaction rate on substrate concentration.",
+      "For 10 points—name this enzyme-kinetics equation named for Leonor Michaelis and Maud Menten."
+    ],
+    "answer": "The Michaelis-Menten equation",
+    "answerLine": "Michaelis-Menten equation (accept Michaelis-Menten kinetics)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "Its assumptions include random mating and the absence of selection, migration, and mutation.",
+      "For two alleles, genotype frequencies are expressed as p squared, two pq, and q squared.",
+      "It predicts stable allele frequencies in an idealized population across generations.",
+      "For 10 points—name this population-genetics equilibrium principle."
+    ],
+    "answer": "The Hardy-Weinberg principle",
+    "answerLine": "Hardy-Weinberg principle (accept Hardy-Weinberg equilibrium or Hardy-Weinberg law)"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "For a nonrotating uncharged black hole, its radius is two GM divided by c squared.",
+      "Crossing this boundary prevents a future-directed light signal from reaching a distant observer.",
+      "It marks a black hole's boundary of no return.",
+      "For 10 points—name this boundary beyond which light cannot escape to infinity."
+    ],
+    "answer": "The event horizon",
+    "answerLine": "event horizon; do not accept singularity"
+  },
+  {
+    "category": "Science",
+    "clues": [
+      "This relation contains the logarithm of a conjugate-base to acid concentration ratio.",
+      "When that ratio is one, it predicts that pH equals pKa.",
+      "It is widely used to estimate the pH of a buffer solution.",
+      "For 10 points—name this equation linking pH, pKa, and acid-base composition."
+    ],
+    "answer": "The Henderson-Hasselbalch equation",
+    "answerLine": "Henderson-Hasselbalch equation"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "These numbers satisfy the characteristic equation obtained from the determinant of A minus lambda I.",
+      "Their sum equals the trace of a square matrix when counted with multiplicity.",
+      "For a nonzero vector v, they satisfy Av equals lambda v.",
+      "For 10 points—name these scalar factors associated with a matrix's eigenvectors."
+    ],
+    "answer": "Eigenvalues",
+    "answerLine": "eigenvalues (accept eigenvalue)"
+  },
+  {
+    "category": "Math",
+    "clues": [
+      "Its denominator can be found by summing likelihood times prior over mutually exclusive hypotheses.",
+      "It converts a prior probability into a posterior after evidence is observed.",
+      "It expresses P of A given B using P of B given A, P of A, and P of B.",
+      "For 10 points—name this probability theorem named for an eighteenth-century minister."
+    ],
+    "answer": "Bayes' theorem",
+    "answerLine": "Bayes' theorem (accept Bayes' rule or Bayes' law)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "Vilém Slavata and Jaroslav Borita were among the officials targeted in this event.",
+      "Protestant nobles attacked royal representatives at a Bohemian castle.",
+      "The officials were thrown out of a window in 1618, helping ignite the Thirty Years' War.",
+      "For 10 points—name this event whose name refers to throwing someone from a window in Prague."
+    ],
+    "answer": "The Defenestration of Prague",
+    "answerLine": "Defenestration of Prague (accept Second Defenestration of Prague or Third Defenestration of Prague; accept 1618 Defenestration of Prague)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The Hatt-i Sharif of Gulhane inaugurated this reform era.",
+      "An 1856 decree associated with it promised equality for subjects regardless of religion.",
+      "It sought to modernize the Ottoman Empire's administration, law, and military.",
+      "For 10 points—name this nineteenth-century Ottoman reform movement."
+    ],
+    "answer": "The Tanzimat",
+    "answerLine": "Tanzimat (accept Tanzimat reforms)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "Don John of Austria commanded the victorious coalition in this battle.",
+      "It was a major clash of oared fleets in the Gulf of Patras.",
+      "The Holy League defeated an Ottoman fleet in 1571.",
+      "For 10 points—name this Mediterranean naval battle."
+    ],
+    "answer": "The Battle of Lepanto",
+    "answerLine": "Battle of Lepanto (accept Lepanto)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The real spy in this controversy was identified as Ferdinand Walsin Esterhazy.",
+      "Emile Zola intervened with his open letter J'accuse.",
+      "A Jewish French army officer was wrongly convicted of treason.",
+      "For 10 points—name this political scandal centered on Alfred Dreyfus."
+    ],
+    "answer": "The Dreyfus affair",
+    "answerLine": "Dreyfus affair (accept Dreyfus case)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "The emperor Romanos IV Diogenes was captured in this battle.",
+      "The victorious commander was the Seljuk ruler Alp Arslan.",
+      "This 1071 defeat weakened Byzantine control in Anatolia.",
+      "For 10 points—name this battle between the Byzantine and Seljuk forces."
+    ],
+    "answer": "The Battle of Manzikert",
+    "answerLine": "Battle of Manzikert (accept Manzikert or Malazgirt)"
+  },
+  {
+    "category": "History",
+    "clues": [
+      "This agreement placed a dividing meridian 370 leagues west of the Cape Verde Islands.",
+      "Its allocation helped support Portugal's later claim to Brazil.",
+      "In 1494, Spain and Portugal agreed to divide claims to newly encountered lands outside Europe.",
+      "For 10 points—name this treaty named for a Spanish town."
+    ],
+    "answer": "The Treaty of Tordesillas",
+    "answerLine": "Treaty of Tordesillas (accept Tordesillas)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "A mirror at the back of this painting reflects Philip IV and Mariana.",
+      "The artist depicts himself at a large canvas on the left.",
+      "The Infanta Margarita stands among attendants in a Spanish court interior.",
+      "For 10 points—name this Diego Velazquez painting."
+    ],
+    "answer": "Las Meninas",
+    "answerLine": "Las Meninas (accept The Maids of Honour)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "This composer left Khovanshchina unfinished.",
+      "Viktor Hartmann's memorial exhibition inspired his piano suite with a recurring Promenade.",
+      "His works include Boris Godunov and Pictures at an Exhibition.",
+      "For 10 points—name this Russian composer, a member of the Five."
+    ],
+    "answer": "Modest Mussorgsky",
+    "answerLine": "Modest Mussorgsky (accept Mussorgsky)"
+  },
+  {
+    "category": "Fine Arts",
+    "clues": [
+      "Hannes Meyer and Ludwig Mies van der Rohe followed its founding director.",
+      "It moved from Weimar to Dessau and later to Berlin.",
+      "Walter Gropius founded this German design school in 1919.",
+      "For 10 points—name this school associated with modernist architecture and the integration of art and craft."
+    ],
+    "answer": "The Bauhaus",
+    "answerLine": "Bauhaus (accept Staatliches Bauhaus)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "The eastern end of this strip reaches the border with China.",
+      "It lies between Tajikistan to the north and Pakistan to the south.",
+      "It is the narrow eastern extension of Afghanistan.",
+      "For 10 points—name this mountainous corridor in northeastern Afghanistan."
+    ],
+    "answer": "The Wakhan Corridor",
+    "answerLine": "Wakhan Corridor (accept Wakhan)"
+  },
+  {
+    "category": "Geography",
+    "clues": [
+      "The floating islands of the Uros are found on this lake.",
+      "Inca traditions associate its region with the origins of their rulers.",
+      "It lies high in the Andes on the border of Peru and Bolivia.",
+      "For 10 points—name this large Andean lake."
+    ],
+    "answer": "Lake Titicaca",
+    "answerLine": "Lake Titicaca (accept Titicaca)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "This Vienna-based agency and Mohamed ElBaradei shared the 2005 Nobel Peace Prize.",
+      "Its safeguards verify commitments concerning nuclear material.",
+      "It promotes peaceful uses of nuclear technology while working to prevent its military misuse.",
+      "For 10 points—name this international agency abbreviated IAEA."
+    ],
+    "answer": "The International Atomic Energy Agency",
+    "answerLine": "International Atomic Energy Agency (accept IAEA)"
+  },
+  {
+    "category": "Current Events",
+    "clues": [
+      "This institution's reserve asset is the special drawing right.",
+      "It was established through the Bretton Woods arrangements.",
+      "It monitors economies and lends to countries facing balance-of-payments difficulties.",
+      "For 10 points—name this international financial institution abbreviated IMF."
+    ],
+    "answer": "The International Monetary Fund",
+    "answerLine": "International Monetary Fund (accept IMF; do not accept World Bank)"
+  },
+  {
+    "category": "Mythology",
+    "clues": [
+      "In a Sumerian account, this goddess passes through seven gates and loses a garment or ornament at each.",
+      "Her sister Ereshkigal rules the underworld to which she descends.",
+      "She is a Mesopotamian goddess associated with love and war, closely identified with the Akkadian Ishtar.",
+      "For 10 points—name this Sumerian goddess."
+    ],
+    "answer": "Inanna",
+    "answerLine": "Inanna (accept Ishtar)"
+  },
+  {
+    "category": "Social Science",
+    "clues": [
+      "In its standard one-shot form, each player has a dominant strategy that produces a worse joint outcome.",
+      "Mutual cooperation would benefit both players more than mutual defection.",
+      "Its classic story offers two suspects incentives to betray one another.",
+      "For 10 points—name this game-theory dilemma."
+    ],
+    "answer": "The prisoner's dilemma",
+    "answerLine": "prisoner's dilemma (accept prisoners' dilemma)"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "clues": [
+      "This philosopher proposed that inequalities should benefit the least advantaged under the difference principle.",
+      "His original position places choosers behind a veil of ignorance.",
+      "He defended justice as fairness in A Theory of Justice.",
+      "For 10 points—name this twentieth-century American political philosopher."
+    ],
+    "answer": "John Rawls",
+    "answerLine": "John Rawls (accept Rawls)"
+  },
+  {
+    "category": "Pop Culture / Sports",
+    "clues": [
+      "The athlete who popularized this technique won Olympic gold at Mexico City in 1968.",
+      "It replaced older high-jump approaches such as the straddle for many competitors.",
+      "The jumper crosses the bar headfirst with the back facing downward.",
+      "For 10 points—name this high-jump technique associated with Dick Fosbury."
+    ],
+    "answer": "The Fosbury flop",
+    "answerLine": "Fosbury flop (accept flop; prompt on high jump)"
+  },
+  {
+    "category": "Misc/General Knowledge",
+    "clues": [
+      "Its original creator published under a pseudonym meaning one who hopes.",
+      "L. L. Zamenhof introduced it in 1887.",
+      "It was designed as an international auxiliary language with regular grammatical rules.",
+      "For 10 points—name this constructed language."
+    ],
+    "answer": "Esperanto",
+    "answerLine": "Esperanto"
+  }
+]);
+
+BANK_STATE_DIRECTED.push(...[
+  {
+    "category": "Literature",
+    "question": "What Argentine writer authored The Library of Babel and The Garden of Forking Paths?",
+    "answer": "Jorge Luis Borges",
+    "answerLine": "Jorge Luis Borges (accept Borges)"
+  },
+  {
+    "category": "Literature",
+    "question": "What work attributed to Murasaki Shikibu follows the life and courtly relationships of Hikaru Genji?",
+    "answer": "The Tale of Genji",
+    "answerLine": "The Tale of Genji (accept Genji Monogatari)"
+  },
+  {
+    "category": "Science",
+    "question": "What limit of roughly 1.4 solar masses gives the maximum mass of an idealized nonrotating white dwarf supported by electron degeneracy pressure?",
+    "answer": "The Chandrasekhar limit",
+    "answerLine": "Chandrasekhar limit (accept Chandrasekhar mass)"
+  },
+  {
+    "category": "Science",
+    "question": "What five positions in a two-body orbital system allow a small object to remain fixed relative to the two larger bodies in the rotating frame?",
+    "answer": "The Lagrange points",
+    "answerLine": "Lagrange points (accept Lagrangian points or libration points)"
+  },
+  {
+    "category": "Math",
+    "question": "What test relates convergence of a series with positive decreasing terms to convergence of a corresponding improper integral?",
+    "answer": "The integral test",
+    "answerLine": "integral test (accept integral test for convergence)"
+  },
+  {
+    "category": "History",
+    "question": "What 1122 agreement between Henry V and Pope Calixtus II settled a major phase of the Investiture Controversy?",
+    "answer": "The Concordat of Worms",
+    "answerLine": "Concordat of Worms (accept Worms Concordat; prompt on Worms)"
+  },
+  {
+    "category": "History",
+    "question": "What 1905 treaty ended the Russo-Japanese War after mediation by Theodore Roosevelt?",
+    "answer": "The Treaty of Portsmouth",
+    "answerLine": "Treaty of Portsmouth (accept Portsmouth)"
+  },
+  {
+    "category": "Fine Arts",
+    "question": "What Baroque sculptor created The Ecstasy of Saint Teresa in Rome's Cornaro Chapel?",
+    "answer": "Gian Lorenzo Bernini",
+    "answerLine": "Gian Lorenzo Bernini (accept Bernini)"
+  },
+  {
+    "category": "Geography",
+    "question": "What mountain pass traditionally connects the Peshawar region of Pakistan with Afghanistan?",
+    "answer": "The Khyber Pass",
+    "answerLine": "Khyber Pass (accept Khyber)"
+  },
+  {
+    "category": "Theology/Philosophy",
+    "question": "What philosopher presented a geometrically structured Ethics and identified God with Nature?",
+    "answer": "Baruch Spinoza",
+    "answerLine": "Baruch Spinoza (accept Benedict Spinoza or Spinoza)"
+  }
+]);
 
 // ---------------------------------------------------------------------------
 // Bank registry — the app reads this.
